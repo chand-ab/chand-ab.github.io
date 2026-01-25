@@ -3,8 +3,9 @@ project:
   output-dir: docs
 
 website:
-  title: "chand-ab.github.io"
+  title: "A Chand"
   navbar:
+    title: false
     left:
       - href: index.qmd
         text: Home
