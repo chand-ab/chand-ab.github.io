@@ -1,0 +1,16 @@
+---
+title: "Blog"
+listing:
+  contents: blog
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+  exclude:
+    draft: true  # Add this line
+page-layout: full
+title-block-banner: true
+---
+
+Technical posts on AI, ML, and related topics.

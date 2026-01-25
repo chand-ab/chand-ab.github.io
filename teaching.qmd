@@ -1,0 +1,35 @@
+---
+title: "Teaching"
+---
+
+## As Instructor of record
+
+**Spring 2026**   
+DS 150: Computing in Python: Fundamentals and Procedural Programming    
+DS 740: Data Mining & Machine Learning
+
+**Fall 2025**   
+DS 150: Computing in Python: Fundamentals and Procedural Programming    
+Math 109: Precalculus Algebra
+
+**Summer 2024**  
+[Math 340: Differential Equations](teaching/ode_summer24.qmd)
+
+**Spring 2021**  
+[Math 250: Applied Calculus](teaching/calc_math250_sp21.qmd)
+
+**Fall 2020**  
+[Precalculus Algebra](teaching/precalculus.qmd)
+
+---
+
+## As Recitation Instructor
+
+**Spring 2024**  
+Math 150: Plane Trigonometry and Analytic Geometry
+
+**Fall 2023**  
+Calculus III: Multivariable Calculus
+
+**Spring 2022**  
+Math 221: Analytic Geometry and Calculus II

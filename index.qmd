@@ -1,0 +1,48 @@
+---
+title: "Abhinav Chand"
+image: assets/upload.jpg
+about:
+  template: trestles
+  image-shape: rounded
+  image-width: 200px
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/chand-ab
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/abc2421412/
+    - icon: envelope
+      text: Email
+      href: mailto:chandab@uwec.edu
+---
+
+I am an Assistant Professor in the Mathematics Department at the University of Wisconsin-Eau Claire. I teach data 
+science and mathematics courses. 
+
+Currently teaching:
+
+* DS 150 Computing in Python: Fundamentals and Procedural Programming
+* DS 740 Data Mining & Machine Learning
+
+My current research interests are as follows:
+
+* Network Science
+* Graph Neural Networks and Transformers
+* Machine learning
+* Mechanistic Interpretability
+
+Teaching philosophy TLDR:
+
+* Develop the habit of learning from first principles  
+* Motivate everything
+* Well motivated and engaging active learning problem sets with appropriate scaffolding 
+([TILT](https://www.tilthighered.com/){target="_blank"})   
+* Students build things that they are passionate about through mini-projects and capstone projects    
+* A functional and affordable AI tutor       
+* Teaching stack: [Mentimeter](https://www.mentimeter.com/){target="_blank"}, 
+[Manim](https://www.manim.community/){target="_blank"}, 
+[Nbgrader](https://nbgrader.readthedocs.io/en/stable/){target="_blank"}, 
+[markdown2canvas](https://ofloveandhate.github.io/markdown2canvas/){target="_blank"}, 
+[codeshare](https://codeshare.io/){target="_blank"}, 
+[Slack](https://slack.com/){target="_blank"}
