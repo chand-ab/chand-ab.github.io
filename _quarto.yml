@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "A Chand"
+  title: ""
   navbar:
     title: false
     left:

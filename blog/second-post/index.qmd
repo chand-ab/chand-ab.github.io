@@ -1,0 +1,25 @@
+---
+title: "Neural Networks"
+author: "Foo John"
+date: "2025-02-02"
+description: "Interpreting neural models"
+bibliography: ../../assets/publications.bib 
+draft: true 
+---
+
+## Introduction
+
+@spectrum discovered neural networks.
+It is well known [-@spectrum].
+Both @spectrum and @simavg argue this.
+
+
+## Methods
+
+Our work is a descendant of several works on transformers [@graphlearning; @simavg].
+This proof is well known [@simavg, Section 3.2]. 
+
+## References
+
+::: {#refs}
+:::

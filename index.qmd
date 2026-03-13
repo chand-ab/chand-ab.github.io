@@ -28,7 +28,7 @@ Currently teaching:
 My current research interests are as follows:
 
 * Network Science
-* Graph Neural Networks and Transformers
+* Graph Neural Networks
 * Machine learning
 * Mechanistic Interpretability
 
@@ -44,5 +44,4 @@ Teaching philosophy TLDR:
 [Manim](https://www.manim.community/){target="_blank"}, 
 [Nbgrader](https://nbgrader.readthedocs.io/en/stable/){target="_blank"}, 
 [markdown2canvas](https://ofloveandhate.github.io/markdown2canvas/){target="_blank"}, 
-[codeshare](https://codeshare.io/){target="_blank"}, 
-[Slack](https://slack.com/){target="_blank"}
+[codeshare](https://codeshare.io/){target="_blank"}

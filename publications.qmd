@@ -1,6 +1,11 @@
 ---
 title: "Publications"
 bibliography: ./assets/publications.bib
-nocite: |
-  @*
+csl: https://www.zotero.org/styles/apa-cv  # or ieee-with-url, nature, etc.
+nocite: '@*'
+link-citations: true
+css: publications.css 
 ---
+
+::: {#refs}
+:::

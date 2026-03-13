@@ -84,55 +84,6 @@
     "text": "Exams\n1. Midterm 1  (Solution) 2. Midterm 2 (Solution) 3. Midterm 3 (Solution) 4. Midterm 4 5. Final"
   },
   {
-    "objectID": "publications.html",
-    "href": "publications.html",
-    "title": "Publications",
-    "section": "",
-    "text": "References\n\nAlbin, Nathan, Brian Benson, Abhinav Chand, and Pietro Poggi-Corradini. 2025. “The Spanning Tree Modulus and the Laplace Spectrum of a Graph.” Unpublished Manuscript, November.\n\n\nChand, Abhinav. 2025. “Influence Problems on a Content-Spreading Model and Graph Machine Learning.” Phys. Rev. E 112 (December): 064312. https://doi.org/10.1103/2cnl-b6wl.\n\n\nChand, Abhinav, Leonel Robert, and Arindam Sutradhar. 2021. “Simultaneous Averaging to Zero by Unitary Mixing Operators.” Proceedings of the American Mathematical Society 149 (12): 5169–77. https://doi.org/10.1090/proc/15495."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Abhinav Chand",
-    "section": "",
-    "text": "I am an Assistant Professor in the Mathematics Department at the University of Wisconsin-Eau Claire. I teach data science and mathematics courses.\nCurrently teaching:\n\nDS 150 Computing in Python: Fundamentals and Procedural Programming\nDS 740 Data Mining & Machine Learning\n\nMy current research interests are as follows:\n\nNetwork Science\nGraph Neural Networks and Transformers\nMachine learning\nMechanistic Interpretability\n\nTeaching philosophy TLDR:\n\nDevelop the habit of learning from first principles\n\nMotivate everything\nWell motivated and engaging active learning problem sets with appropriate scaffolding (TILT)\n\nStudents build things that they are passionate about through mini-projects and capstone projects\n\nA functional and affordable AI tutor\n\nTeaching stack: Mentimeter, Manim, Nbgrader, markdown2canvas, codeshare, Slack"
-  },
-  {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teaching",
-    "section": "",
-    "text": "Spring 2026\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nDS 740: Data Mining & Machine Learning\nFall 2025\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nMath 109: Precalculus Algebra\nSummer 2024\nMath 340: Differential Equations\nSpring 2021\nMath 250: Applied Calculus\nFall 2020\nPrecalculus Algebra"
-  },
-  {
-    "objectID": "teaching.html#as-instructor-of-record",
-    "href": "teaching.html#as-instructor-of-record",
-    "title": "Teaching",
-    "section": "",
-    "text": "Spring 2026\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nDS 740: Data Mining & Machine Learning\nFall 2025\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nMath 109: Precalculus Algebra\nSummer 2024\nMath 340: Differential Equations\nSpring 2021\nMath 250: Applied Calculus\nFall 2020\nPrecalculus Algebra"
-  },
-  {
-    "objectID": "teaching.html#as-recitation-instructor",
-    "href": "teaching.html#as-recitation-instructor",
-    "title": "Teaching",
-    "section": "As Recitation Instructor",
-    "text": "As Recitation Instructor\nSpring 2024\nMath 150: Plane Trigonometry and Analytic Geometry\nFall 2023\nCalculus III: Multivariable Calculus\nSpring 2022\nMath 221: Analytic Geometry and Calculus II"
-  },
-  {
-    "objectID": "talks.html",
-    "href": "talks.html",
-    "title": "Talks & Presentations",
-    "section": "",
-    "text": "Modeling Content Spreading on Networks Through Network Science and Graph Neural Networks\nJoint Mathematics Meetings, Seattle, January 2025\nSlides\nHigher Order Cheeger Inequalities\nNode seminar, Kansas State University, November 2024\nSlides\nApplications of Neural Networks to Modulus on Networks\nSIAM Central States Section Annual Meeting 2024, Kansas City, October 2024\nSlides\nIntroduction to GFlowNets\nNode seminar, Kansas State University, March 2024\nSlides\nIntroduction to Threshold Networks\nNode seminar, Kansas State University, November 2023\nSlides"
-  },
-  {
-    "objectID": "talks.html#conference-seminar-talks",
-    "href": "talks.html#conference-seminar-talks",
-    "title": "Talks & Presentations",
-    "section": "",
-    "text": "Modeling Content Spreading on Networks Through Network Science and Graph Neural Networks\nJoint Mathematics Meetings, Seattle, January 2025\nSlides\nHigher Order Cheeger Inequalities\nNode seminar, Kansas State University, November 2024\nSlides\nApplications of Neural Networks to Modulus on Networks\nSIAM Central States Section Annual Meeting 2024, Kansas City, October 2024\nSlides\nIntroduction to GFlowNets\nNode seminar, Kansas State University, March 2024\nSlides\nIntroduction to Threshold Networks\nNode seminar, Kansas State University, November 2023\nSlides"
-  },
-  {
     "objectID": "teaching/ode_summer24.html",
     "href": "teaching/ode_summer24.html",
     "title": "Math 340: Differential Equations (Summer 2024)",
@@ -187,6 +138,76 @@
     "title": "Math 340: Differential Equations (Summer 2024)",
     "section": "Schedule",
     "text": "Schedule\n\n\n\nWeek\nDate\nDay\nTopics\nHomework\nVideos Assignment\n\n\n\n\n1\n03-Jun-24\nMonday\nCalc review and Chapter 0\n\n\n\n\n\n04-Jun-24\nTuesday\nChapter 0\n\n\n\n\n\n05-Jun-24\nWednesday\nSection 1.1\n\n\n\n\n\n06-Jun-24\nThursday\nSection 1.2\n\n\n\n\n\n07-Jun-24\nFriday\nSection 1.3\nHW 1 due\nDifferential Equations and Dynamical Systems: Overview + Calculus Review: The Derivative (and the Power Law and Chain Rule)\n\n\n\n\n\n\n\n\n\n\n2\n10-Jun-24\nMonday\nSection 1.4\n\n\n\n\n\n11-Jun-24\nTuesday\nSection 1.5\n\n\n\n\n\n12-Jun-24\nWednesday\nSection 1.6\n\n\n\n\n\n13-Jun-24\nThursday\nReview\nHW 2 due\n\n\n\n\n14-Jun-24\nFriday\nExam 1\n\n\n\n\n\n\n\n\n\n\n\n\n3\n17-Jun-24\nMonday\nSection 2.1\n\n\n\n\n\n18-Jun-24\nTuesday\nSection 2.2\n\n\n\n\n\n19-Jun-24\nWednesday\nHoliday\n\n\n\n\n\n20-Jun-24\nThursday\nSection 2.2\n\n\n\n\n\n21-Jun-24\nFriday\nSection 2.3\nHW 3 due\nsimplest ode + example ode\n\n\n\n\n\n\n\n\n\n\n4\n24-Jun-24\nMonday\nSection 2.4\n\n\n\n\n\n25-Jun-24\nTuesday\nSection 2.5\n\n\n\n\n\n26-Jun-24\nWednesday\nSection 2.5\n\n\n\n\n\n27-Jun-24\nThursday\nReview\n\n\n\n\n\n28-Jun-24\nFriday\nExam 2\nHW 4 due\nSolving the Harmonic Oscillator Four Ways\n\n\n\n\n\n\n\n\n\n\n5\n01-Jul-24\nMonday\nSection 3.1\n\n\n\n\n\n02-Jul-24\nTuesday\nSection 3.2\n\n\n\n\n\n03-Jul-24\nWednesday\nSection 3.2\n\n\n\n\n\n04-Jul-24\nThursday\nHoliday\n\n\n\n\n\n05-Jul-24\nFriday\nSection 3.3\nHW 5 due\nMatrix Systems of Differential Equations+ 3Blue1Brown\n\n\n\n\n\n\n\n\n\n\n6\n08-Jul-24\nMonday\nSection 3.4\n\n\n\n\n\n09-Jul-24\nTuesday\nSection 3.5\n\n\n\n\n\n10-Jul-24\nWednesday\nSection 3.5\n\n\n\n\n\n11-Jul-24\nThursday\nReview\n\n\n\n\n\n12-Jul-24\nFriday\nExam 3\nHW 6 due\n\n\n\n\n\n\n\n\n\n\n\n7\n15-Jul-24\nMonday\nSection 6.1\n\n\n\n\n\n16-Jul-24\nTuesday\nSection 6.2\n\n\n\n\n\n17-Jul-24\nWednesday\nSection 6.2\n\n\n\n\n\n18-Jul-24\nThursday\nSection 6.3\n\n\n\n\n\n19-Jul-24\nFriday\nSection 6.3\nHW 7 due\nThe intuition behind Fourier and Laplace transforms+But what is the Fourier Transform?\n\n\n\n\n\n\n\n\n\n\n8\n22-Jul-24\nMonday\nSection 6.4\n\n\n\n\n\n23-Jul-24\nTuesday\nSection 6.4\n\n\n\n\n\n24-Jul-24\nWednesday\nReview\n\n\n\n\n\n25-Jul-24\nThursday\nReview\n\n\n\n\n\n26-Jul-24\nFriday\nFinal\nHW 8 due"
+  },
+  {
+    "objectID": "talks.html",
+    "href": "talks.html",
+    "title": "Talks & Presentations",
+    "section": "",
+    "text": "Analysis of reasoning models\nAMS Special Session on Mathematical Foundation of Machine Learning\nJoint Mathematics Meetings, Washington D.C., January 2026\nLink to session\nModeling Content Spreading on Networks Through Network Science and Graph Neural Networks\nAMS Special Session on Modeling and Optimization on Graph-Structured Data\nJoint Mathematics Meetings, Seattle, January 2025\nSlides\nHigher Order Cheeger Inequalities\nNode seminar, Kansas State University, November 2024\nSlides\nApplications of Neural Networks to Modulus on Networks\nSIAM Central States Section Annual Meeting 2024, Kansas City, October 2024\nSlides\nIntroduction to GFlowNets\nNode seminar, Kansas State University, March 2024\nSlides\nIntroduction to Threshold Networks\nNode seminar, Kansas State University, November 2023\nSlides"
+  },
+  {
+    "objectID": "talks.html#conference-seminar-talks",
+    "href": "talks.html#conference-seminar-talks",
+    "title": "Talks & Presentations",
+    "section": "",
+    "text": "Analysis of reasoning models\nAMS Special Session on Mathematical Foundation of Machine Learning\nJoint Mathematics Meetings, Washington D.C., January 2026\nLink to session\nModeling Content Spreading on Networks Through Network Science and Graph Neural Networks\nAMS Special Session on Modeling and Optimization on Graph-Structured Data\nJoint Mathematics Meetings, Seattle, January 2025\nSlides\nHigher Order Cheeger Inequalities\nNode seminar, Kansas State University, November 2024\nSlides\nApplications of Neural Networks to Modulus on Networks\nSIAM Central States Section Annual Meeting 2024, Kansas City, October 2024\nSlides\nIntroduction to GFlowNets\nNode seminar, Kansas State University, March 2024\nSlides\nIntroduction to Threshold Networks\nNode seminar, Kansas State University, November 2023\nSlides"
+  },
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "Spring 2026\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nDS 740: Data Mining & Machine Learning\nFall 2025\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nMath 109: Precalculus Algebra\nSummer 2024\nMath 340: Differential Equations\nSpring 2021\nMath 250: Applied Calculus\nFall 2020\nPrecalculus Algebra"
+  },
+  {
+    "objectID": "teaching.html#as-instructor-of-record",
+    "href": "teaching.html#as-instructor-of-record",
+    "title": "Teaching",
+    "section": "",
+    "text": "Spring 2026\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nDS 740: Data Mining & Machine Learning\nFall 2025\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nMath 109: Precalculus Algebra\nSummer 2024\nMath 340: Differential Equations\nSpring 2021\nMath 250: Applied Calculus\nFall 2020\nPrecalculus Algebra"
+  },
+  {
+    "objectID": "teaching.html#as-recitation-instructor",
+    "href": "teaching.html#as-recitation-instructor",
+    "title": "Teaching",
+    "section": "As Recitation Instructor",
+    "text": "As Recitation Instructor\nSpring 2024\nMath 150: Plane Trigonometry and Analytic Geometry\nFall 2023\nCalculus III: Multivariable Calculus\nSpring 2022\nMath 221: Analytic Geometry and Calculus II"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Abhinav Chand",
+    "section": "",
+    "text": "I am an Assistant Professor in the Mathematics Department at the University of Wisconsin-Eau Claire. I teach data science and mathematics courses.\nCurrently teaching:\n\nDS 150 Computing in Python: Fundamentals and Procedural Programming\nDS 740 Data Mining & Machine Learning\n\nMy current research interests are as follows:\n\nNetwork Science\nGraph Neural Networks\nMachine learning\nMechanistic Interpretability\n\nTeaching philosophy TLDR:\n\nDevelop the habit of learning from first principles\n\nMotivate everything\nWell motivated and engaging active learning problem sets with appropriate scaffolding (TILT)\n\nStudents build things that they are passionate about through mini-projects and capstone projects\n\nA functional and affordable AI tutor\n\nTeaching stack: Mentimeter, Manim, Nbgrader, markdown2canvas, codeshare"
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "Albin, N., Benson, B., Chand, A., & Poggi-Corradini, P. (2025). The spanning tree modulus and the laplace spectrum of a graph. Unpublished Manuscript.\n\n\nChand, A. (2025). Influence problems on a content-spreading model and graph machine learning. Phys. Rev. E, 112, 064312. https://doi.org/10.1103/2cnl-b6wl\n\n\nChand, A., Robert, L., & Sutradhar, A. (2021). Simultaneous averaging to zero by unitary mixing operators. Proceedings of the American Mathematical Society, 149(12), 5169–5177. https://doi.org/10.1090/proc/15495"
+  },
+  {
+    "objectID": "teaching/precalculus.html",
+    "href": "teaching/precalculus.html",
+    "title": "Precalculus Algebra",
+    "section": "",
+    "text": "This is not the official course page. Some materials for the course are listed below."
+  },
+  {
+    "objectID": "teaching/precalculus.html#lecture-notes",
+    "href": "teaching/precalculus.html#lecture-notes",
+    "title": "Precalculus Algebra",
+    "section": "Lecture Notes",
+    "text": "Lecture Notes\n1. Why calculus? 2. Graph of a function 3. Composing functions 4. One-to-one and inverse 5. Polynomials 6. Division of polynomials 7. Zeros and end behavior 8. Rational functions 8.1 Factor theorem, Descartes’ rule of signs 9. Complex numbers 10. Exponents 11. Logarithms 10. More on logarithms 12. Exp and log models 12. Exponents and Logarithm equations 13. System of equations 14. Three variables 15. Gauss Jordan"
+  },
+  {
+    "objectID": "teaching/precalculus.html#exams",
+    "href": "teaching/precalculus.html#exams",
+    "title": "Precalculus Algebra",
+    "section": "Exams",
+    "text": "Exams\n1. Midterm 1  (Solution) 2. Midterm 2 (Solution) 3. Midterm 3 (Solution) 4. Midterm 4 5. Final"
   },
   {
     "objectID": "teaching/materials/calc_math250/calc_spring21.html",

@@ -1,0 +1,21 @@
+---
+title: "Hello World"
+author: "Foo John"
+date: "2025-02-02"
+description: "Interpreting linear models"
+bibliography: ../../assets/publications.bib 
+draft: true 
+---
+
+## Introduction
+
+Linear models are linear functions of inputs
+
+## Related Work
+
+@graphlearning
+
+## References
+
+::: {#refs}
+:::

@@ -4,7 +4,13 @@ title: "Talks & Presentations"
 
 ## Conference & Seminar Talks
 
-**Modeling Content Spreading on Networks Through Network Science and Graph Neural Networks**  
+**Analysis of reasoning models**  
+*AMS Special Session on Mathematical Foundation of Machine Learning*  
+*Joint Mathematics Meetings, Washington D.C., January 2026*  
+<a href="https://jointmathematicsmeetings.org/meetings/national/jmm2026/jmm2026-program" target="_blank" rel="noopener noreferrer">Link to session</a>
+
+**Modeling Content Spreading on Networks Through Network Science and Graph Neural Networks**    
+*AMS Special Session on Modeling and Optimization on Graph-Structured Data*  
 *Joint Mathematics Meetings, Seattle, January 2025*  
 <a href="assets/talks/slided_test.pdf" target="_blank" rel="noopener noreferrer">Slides</a>
 
@@ -26,26 +32,4 @@ title: "Talks & Presentations"
 
 
 
-<!-- ---
-layout: page
-permalink: assets/talks&talks/
-title: Talks
-description:
-nav: true
-nav_order: 6
----
 
-### Network Science and Machine Learning
-
-*Modeling Content Spreading on Networks Through Network Science and Graph Neural Networks* <a href="assets/talks/slided_test.pdf" target="_blank">Slides</a>\\
-*Introduction to Gflownets* <a href="assets/talks/Gflownets Slides.pdf" target="_blank">Slides</a>\\
-*Introduction to Threshold Networks* <a href="assets/talks/ctln_slides.pdf" target="_blank">Slides</a>\\
-*Applications of Neural Networks to Modulus on Networks* <a href="assets/talks/Applications of Neural Networks to Modulus on Networks.pptx" target="_blank">Slides</a>\\
-*Higher Order Cheeger Inequalities* <a href="assets/talks/Cheeger.pdf" target="_blank">Slides</a>
-
-### Representation Theory, Symplectic Geometry
-
-*Introduction to Lie Algebras* <a href="assets/talks/lie_alg.pdf" target="_blank">Slides</a>\\
-*Symplectic Reduction* <a href="assets/talks/Symplectic Reduction.pdf" target="_blank">Slides</a>\\
-*Orbit Method* <a href="assets/talks/orbit method.pdf" target="_blank">Exposition</a>
- -->
