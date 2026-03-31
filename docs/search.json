@@ -179,14 +179,14 @@
     "href": "index.html",
     "title": "Abhinav Chand",
     "section": "",
-    "text": "I am an Assistant Professor in the Mathematics Department at the University of Wisconsin-Eau Claire. I teach data science and mathematics courses.\nCurrently teaching:\n\nDS 150 Computing in Python: Fundamentals and Procedural Programming\nDS 740 Data Mining & Machine Learning\n\nMy current research interests are as follows:\n\nNetwork Science\nGraph Neural Networks\nMachine learning\nMechanistic Interpretability\n\nTeaching philosophy TLDR:\n\nDevelop the habit of learning from first principles\n\nMotivate everything\nWell motivated and engaging active learning problem sets with appropriate scaffolding (TILT)\n\nStudents build things that they are passionate about through mini-projects and capstone projects\n\nA functional and affordable AI tutor\n\nTeaching stack: Mentimeter, Manim, Nbgrader, markdown2canvas, codeshare"
+    "text": "I am an Assistant Professor in the Mathematics Department at the University of Wisconsin-Eau Claire.\nCurrent teaching:\n\nDS 150 Computing in Python: Fundamentals and Procedural Programming\n\nDS 740 Data Mining & Machine Learning\n\nCurrent research interests:\n\nNetwork Science and Graph Neural Networks\nDeep learning\nMechanistic Interpretability\n\nTeaching philosophy TLDR:\n\nDevelop the habit of learning from first principles\n\nMotivate everything\nWell motivated and engaging active learning problem sets with appropriate scaffolding (TILT)\n\nStudents build things that they are passionate about through mini-projects and mini-hackathons\nTeaching stack: Mentimeter, Manim, Nbgrader, markdown2canvas, codeshare"
   },
   {
     "objectID": "publications.html",
     "href": "publications.html",
     "title": "Publications",
     "section": "",
-    "text": "Albin, N., Benson, B., Chand, A., & Poggi-Corradini, P. (2025). The spanning tree modulus and the laplace spectrum of a graph. Unpublished Manuscript.\n\n\nChand, A. (2025). Influence problems on a content-spreading model and graph machine learning. Phys. Rev. E, 112, 064312. https://doi.org/10.1103/2cnl-b6wl\n\n\nChand, A., Robert, L., & Sutradhar, A. (2021). Simultaneous averaging to zero by unitary mixing operators. Proceedings of the American Mathematical Society, 149(12), 5169–5177. https://doi.org/10.1090/proc/15495"
+    "text": "Chand, A. (2025). Influence problems on a content-spreading model and graph machine learning. Phys. Rev. E, 112, 064312. https://doi.org/10.1103/2cnl-b6wl\n\n\nChand, A., & Robert, L. (2023). Simplicity, bounded normal generation, and automatic continuity of groups of unitaries. Advances in Mathematics, 415, 108894. https://doi.org/https://doi.org/10.1016/j.aim.2023.108894\n\n\nChand, A., Robert, L., & Sutradhar, A. (2021). Simultaneous averaging to zero by unitary mixing operators. Proceedings of the American Mathematical Society, 149(12), 5169–5177. https://doi.org/10.1090/proc/15495"
   },
   {
     "objectID": "teaching/precalculus.html",
