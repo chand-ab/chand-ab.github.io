@@ -1,0 +1,225 @@
+---
+title: "Confused about the confusion matrix"
+author: "Abhinav Chand"
+date: "2026-04-05"
+description: "Accuracy, precision, recall and all that."
+bibliography: [../blog_refs.bib, ../../assets/publications.bib]
+draft: false
+---
+
+## Motivation
+
+Say that we are using a model to predict the outcomes of inputs and the outcomes are binary-- positive 
+or negative. Some examples are:
+
+- Predicting whether a patient has COVID 19: positive vs. negative
+- Predicting whether it will rain tomorrow: positive vs. negative
+- Predicting whether we will have an AGI system by 2030: positive vs. negative
+- Predicting whether the sentiment of the sentence "I love my cat." (positive vs. negative)
+- Predicting whether a vision model classifies an image as cat vs. non-cat (positive vs. negative)
+
+Note the following:
+
+- Even though the above setup assumes a prediction outcome, it does not imply that the model is necessarily
+assigning probabilities for the positive and negative outcomes. For example, we can have a model that just
+makes random guesses on the outcomes.
+- But usually our models have fixed logit assignments (numbers assigned to the positive and negative outcomes). These
+logits are transformed to a probability distribution using some form of normalization (typically a softmax). Moreover,
+in order to make a prediction, normalization is not required and one can simply select the maximum logit.
+
+We can evaluate such models with the accuracy metric:
+$$ \text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Total number of predictions}}$$.
+
+The accuracy metric is limited. If I claim that my model has an accuracy of 70%, it tells us that we were right 70% of the time, but
+doesn't tell us about its performance on the positive and negative classes separately. 
+
+## Confusion matrix
+
+### A toy model 
+
+We can describe the totality of predictions on both classes using the confusion matrix. The rows of the matrix represent
+the ground truth values of the two classes, and the columns represent the predicted values on them. 
+
+For example, say there are 100 patients, and our model makes predictions on whether they are infected with the COVID-19 virus.
+50 patients were infected and the remaining 50 were not. Out of the 50 patients
+that were infected, the model predicted 30 of them correctly and out of the 50 remaining patients, the model predicted 40 of them 
+correctly. Our confusion matrix is shown in Figure 1. 
+
+```{python}
+#| label: fig-confusion-matrix
+#| fig-cap: "A confusion matrix of the toy model."
+
+import numpy as np
+import pandas as pd
+import plotly.express as px
+
+labels = ["negative", "positive"]
+counts = np.array([
+    [40, 10],  
+    [20, 30]
+])
+
+fig = px.imshow(
+    counts,
+    text_auto=True,
+    labels=dict(x="Predicted", y="Actual", color="Count"),
+    x=labels,
+    y=labels,
+    color_continuous_scale="Blues",
+    aspect="equal",
+)
+
+fig.update_xaxes(side="top")
+fig.update_layout(margin=dict(l=60, r=50, t=60, b=60))
+fig.show()
+```
+
+We make the following observations:
+
+- We observe that the model was better (80% accurate) in predicting the negative outcomes compared to the 
+positive outcomes (60% accurate)
+- The diagonal entries represent the correct model predictions
+- The instances where the actual value was negative but the model predicted positive are called **False Positive**(FP).
+- The instances where the actual value was positive but the model predicted negative are called **False Negative**(FN).
+
+
+### A second toy model for comparison
+
+Now consider a different model (say an advanced PCR) whose predictions are shown in Figure 2.
+
+```{python}
+#| label: fig-confusion-matrix-2
+#| fig-cap: "A confusion matrix of the second model."
+
+import numpy as np
+import pandas as pd
+import plotly.express as px
+
+labels = ["negative", "positive"]
+counts = np.array([
+    [25, 25],  
+    [5, 45]
+])
+
+fig = px.imshow(
+    counts,
+    text_auto=True,
+    labels=dict(x="Predicted", y="Actual", color="Count"),
+    x=labels,
+    y=labels,
+    color_continuous_scale="Blues",
+    aspect="equal",
+)
+
+fig.update_xaxes(side="top")
+fig.update_layout(margin=dict(l=60, r=50, t=60, b=60))
+fig.show()
+```
+We make the following observations:
+
+- The second model has the same accuracy as the first model (70%).
+- The second model is correct 50% of the time on the negative classes, while it is correct 90% of the time on the positive classes.
+- The second model is better at classifying the positive cases than the first model (90% compared to 60%).
+- The second model has more false positives-- in the majority of cases where the outcome is negative, it is claiming that
+the patient is COVID-19 positive.
+
+### True positive rate and true negative rate
+
+As observed above, it is revealing to consider the accuracy for the actual positive and negative outcomes separately. These are called the
+**true positive rates**(TPR) and **true negative rates**(TNR) respectively. True positive rate is also called **recall** [@Kent1955].
+
+Here TP stands for true positives (actual positive and model predicts positive), and TN stands for true negatives (actual negative
+and model predicts negative). FP stands for false positives (actual negative and model predicts positive) and FN stands for
+false negatives (actual positive and model predicts negative).
+
+More formally,
+$$\text{Recall} = \frac{TP}{TP + FN},$$
+$$\text{TNR} = \frac{TN}{TN + FP}$$
+
+
+
+### Precision
+
+Now let us consider an imbalanced dataset. Consider a quality control (QC) department that detects defects in a manufactured item
+from the conveyor belt. The manufacturing uses highly precise instruments and hence defects are rare. The confusion matrix is 
+shown in Figure 3. 
+
+```{python}
+#| label: fig-confusion-matrix-3
+#| fig-cap: "Confusion matrix for a QC model."
+
+import numpy as np
+import pandas as pd
+import plotly.express as px
+
+labels = ["negative", "positive"]
+counts = np.array([
+    [90, 5],  
+    [3, 2]
+])
+
+fig = px.imshow(
+    counts,
+    text_auto=True,
+    labels=dict(x="Predicted", y="Actual", color="Count"),
+    x=labels,
+    y=labels,
+    color_continuous_scale="Blues",
+    aspect="equal",
+)
+
+fig.update_xaxes(side="top")
+fig.update_layout(margin=dict(l=60, r=50, t=60, b=60))
+fig.show()
+```
+
+Most items are non-defective (95) and the rest of them (5) are defective. The QC model correctly predicts 90 of the non-defective
+items. The accuracy is 92%, but a trivial model that assigns all the items as non-defective would still have
+an accuracy of 95%, but is rather useless. In this trivial model's case, the TPR is 0% and TNR is 95%.
+
+Sometimes it helps to analyze the **precision**:
+$$\text{Precision} := \frac{TP}{TP + FP}$$
+
+Here we ask: out of all the times the model predicts positive, how many times was it actually correct?
+Precision by itself is not a decisive metric. Precision and recall should both be considered at the same time.
+
+## F1 score
+
+We have analyzed two metrics that measure the performance of models on predicting the positive class: recall and precision.
+Recall tells us what fraction of the ground truth positive instances did the model correctly classify as positive, while
+precision tells us what fraction of the positively predicted instances did the model get correct predictions. We note that
+recall is the ratio along the row for the ground truth positive class and precision is the ratio along the column for the
+predicted positive class.
+
+For a perfect model, both recall and precision are 1.0 as the off-diagonal entries of the confusion matrix are zeros. A model
+which has high recall (closer to 1.0) but low precision (closer to 0.0) is good at flagging the positive class, but at the same
+time is flagging aggressively as there are relatively many false positives. On the other hand,
+a model which has a low recall but a high precision, is flagging precisely (low false positive rate) but is missing out a lot
+of the ground truth positive cases as it has relatively high false negatives (positive but classified negative). 
+
+We want a single measure that characterizes a model based on both precision and recall. It should be high when both of them
+are high and penalize if at least one of the two metrics is low. We can take the arithmetic mean of the two, but it does not
+perform well on all cases. For example, if we travel at the speed of light (c) to the moon and then 60 km/hr back around,
+the average speed is not $(c + 60)/2$ (this is quite large $\sim 5.395 \times 10^8 \text{km/hr}$). The actual average speed is 
+
+$$\frac{2}{\frac{1}{c} + \frac{1}{60}} \sim 120\text{ km/hr}$$
+
+The expression above is the harmonic mean of c and 60 km/hr. In particular,
+
+$$ \text{Harmonic mean of $a$ and $b$} = \frac{2}{\frac{1}{a} + \frac{1}{b}}.$$
+
+Thus we define the F1 score [@vanRijsbergen1979]:
+
+$$ \text{F1 score} = \frac{2}{\frac{1}{\text{precision}} + \frac{1}{\text{recall}}}.$$
+
+## Why call it a matrix?
+
+- What is the vector space on which the confusion matrix acts? (diagonal good, non-diagonal bad)
+- Can there be a map from the space of model parameters to the space of confusion matrices? 
+
+
+## References
+::: {#refs}
+:::
+
+
