@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/blog/linear-regression-post/index.html",
       "/blog/confusion_matrix-post/index.html"
     ]
   }
