@@ -7,7 +7,9 @@ title: "Talks & Presentations"
 **Analysis of reasoning models**  
 *AMS Special Session on Mathematical Foundation of Machine Learning*  
 *Joint Mathematics Meetings, Washington D.C., January 2026*  
+<a href="assets/talks/analysis of reasoning models.pdf" target="_blank" rel="noopener noreferrer">Slides</a>  
 <a href="https://jointmathematicsmeetings.org/meetings/national/jmm2026/jmm2026-program" target="_blank" rel="noopener noreferrer">Link to session</a>
+
 
 **Modeling Content Spreading on Networks Through Network Science and Graph Neural Networks**    
 *AMS Special Session on Modeling and Optimization on Graph-Structured Data*  
