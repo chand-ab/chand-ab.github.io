@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Abhinav Chand">
+<meta name="dcterms.date" content="2026-06-14">
+<meta name="description" content="Solution to Bluedot’s puzzle">
+
+<title>Technical AI Safety Puzzle</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-0d4a9d19931feb4fee1ddab4b2489000.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../publications.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../talks.html"> 
+<span class="menu-text">Talks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
+  <li><a href="#task-1-non-linear-feature" id="toc-task-1-non-linear-feature" class="nav-link" data-scroll-target="#task-1-non-linear-feature">Task 1 (Non-linear feature)</a></li>
+  <li><a href="#task-2-country-feature" id="toc-task-2-country-feature" class="nav-link" data-scroll-target="#task-2-country-feature">Task 2 (Country feature)</a></li>
+  <li><a href="#task-3-weirder-representation" id="toc-task-3-weirder-representation" class="nav-link" data-scroll-target="#task-3-weirder-representation">Task 3 (Weirder representation)</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix">Appendix</a></li>
+  <li><a href="#derivation-of-lda" id="toc-derivation-of-lda" class="nav-link" data-scroll-target="#derivation-of-lda">Derivation of LDA</a></li>
+  <li><a href="#sec-warp" id="toc-sec-warp" class="nav-link" data-scroll-target="#sec-warp">Warp transformation</a></li>
+  <li><a href="#spiral" id="toc-spiral" class="nav-link" data-scroll-target="#spiral">Spiral</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Technical AI Safety Puzzle</h1>
+</div>
+
+<div>
+  <div class="description">
+    Solution to Bluedot’s puzzle
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Abhinav Chand </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 14, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<div id="fig-model" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://raw.githubusercontent.com/SamDower/bluedot-tais-puzzle/main/model_architecture.png" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Model architecture from <a href="https://bluedot.org/puzzles/technical-ai-safety?utm_souce=bluedotcommunity">Bluedot</a>.
+</figcaption>
+</figure>
+</div>
+<p>As shown in <a href="#fig-model" class="quarto-xref">Figure&nbsp;1</a>, this model first takes a text input and encodes it using <a href="https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2">“all-MiniLM-L6-v2”</a>, a 6-layer transformer. Then it averages the representations for all the tokens (mean pooling), and feeds the pooled representation through a 4-layer MLP and a final linear layer to get a 8 dimensional logit vector to predict eight binary variables. Finally, sigmoid is applied to each logit to get the probabilities for each of the features.</p>
+<p>They achieve over 95% accuracy on each of the features. The features are:</p>
+<ul>
+<li><code>number</code> — contains a digit or written-out number (3, seven, …)</li>
+<li><code>question</code> — phrased as a question (ends in ?, or starts with who/what/why/…)</li>
+<li><code>color</code> — contains a color word (red, blue, …)</li>
+<li><code>food</code> — mentions food (pizza, apple, soup, …)</li>
+<li><code>sentiment</code> — has positive vs.&nbsp;negative sentiment</li>
+<li><code>country</code> — contains a country name (Japan, France, USA, …)</li>
+<li><code>person</code> — contains a person’s name (Alice, Mark, …)</li>
+<li><code>body_part</code> — contains a body-part word (hand, eye, …)</li>
+</ul>
+<p>The representations for seven of these features are represented linearly. In other words, you can distinguish the presence/absence of a feature by projecting the representations on some direction. However, one of the feature in not represented linearly, and the problems are as follows:</p>
+<ul>
+<li>Task 1: Find the non-linear feature.</li>
+<li>Task 2: Explain how that feature is represented</li>
+<li>Task 3: Train a model with an even weirder representation</li>
+</ul>
+</section>
+<section id="task-1-non-linear-feature" class="level2">
+<h2 class="anchored" data-anchor-id="task-1-non-linear-feature">Task 1 (Non-linear feature)</h2>
+<p>Our preliminary goal was to use an appropriate dimensional reduction technique to visualize the two dimensional representations for each of the eight features over many examples of both types: feature present and not present.</p>
+<p>We used <a href="https://en.wikipedia.org/wiki/Linear_discriminant_analysis">Linear Discriminant Analysis</a> (see <span class="citation" data-cites="lda_lecture_notes"><span>“Lecture Note: Latent Dirichlet Allocation”</span> (<a href="#ref-lda_lecture_notes" role="doc-biblioref">n.d.</a>)</span>) in order to visualize 2 dimensional projections for each of the features. We observe from <a href="#fig-lda" class="quarto-xref">Figure&nbsp;2</a>, that <code>country</code> is the only feature that is cannot be separated by a hyperplane (in this case it is a line).</p>
+<div id="fig-lda" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./lda_model.png" style="width:70.0%;height:70.0%" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: LDA of the features. X-axis represents the discriminant direction and Y-axis is a random jitter.
+</figcaption>
+</figure>
+</div>
+<p>LDA is not a sure shot technique for separating binary clusters with hyperplanes, even when such a hyperplane exists. There can be situations where the representations of the points can be cleanly separated in some high-dimensional space with a hyperplane but cannot be separated when projected onto a lower dimensional subspace dictated by the LDA (see <a href="#fig-counter" class="quarto-xref">Figure&nbsp;3</a>), but if a LDA projection can be linearly separated, the existence of the hyperplane is guaranteed.</p>
+<div id="fig-counter" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-counter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./counter.svg" style="width:50.0%;height:50.0%" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-counter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Toy example of a case where LDA projection is not the same as the separating hyperplane. In the figure we have a separting hyperplane but we can adjust the points in the two clusters so that the projection of the means is equal to 0 or infinitesimally small
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="task-2-country-feature" class="level2">
+<h2 class="anchored" data-anchor-id="task-2-country-feature">Task 2 (Country feature)</h2>
+<p>To illustrate the <code>country</code> feature, we perform a two-dimensional and three-dimensional PCA on the hidden layer 2 activations derived from the train dataset. For this, we also filtered out the texts that were incorrectly labeled by the model.</p>
+<div id="fig-2d" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./pca_country_2d_layer2.png" style="width:70.0%;height:70.0%" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: 2d PCA of the country feature.
+</figcaption>
+</figure>
+</div>
+<div id="fig-3d" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe src="./pca_country_3d_layer2.html" width="100%" height="500px" style="border:none;">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: 3D PCA of the country feature.
+</figcaption>
+</figure>
+</div>
+<p>From <a href="#fig-2d" class="quarto-xref">Figure&nbsp;4</a> and <a href="#fig-3d" class="quarto-xref">Figure&nbsp;5</a> we can see that the positive class points are sandwiched on all sides by the negative class points.</p>
+</section>
+<section id="task-3-weirder-representation" class="level2">
+<h2 class="anchored" data-anchor-id="task-3-weirder-representation">Task 3 (Weirder representation)</h2>
+<p>For this task, our goal was to modify the PCA projections of the intervened activations. Instead of training a new model altogether, we trained a modified model as shown in <a href="#fig-newmodel" class="quarto-xref">Figure&nbsp;6</a>. Originally, the PCA of the activations following layer 2 gave us the sandwich representation. We chose to modify this PCA to a new representation as shown in <a href="#fig-intervenepca" class="quarto-xref">Figure&nbsp;7</a>. Our loss function for this model is as follows:</p>
+<p><span id="eq-loss"><span class="math display">\[
+\text{Loss} = \text{weight}\times\|\text{Proj}(\tilde{x}_2) - \text{warp}(\text{Proj}(x_2))\|^2 + \|x_3 - \tilde{x}_3\|^2
+\tag{1}\]</span></span></p>
+<p>Here <span class="math inline">\(x_2\)</span> is the activation after layer 2 in the original model, and <span class="math inline">\(\tilde{x}_2\)</span> is the activation after layer 2 in the new model, and similarly, <span class="math inline">\(x_3\)</span> is the activation after layer 2 in the original model, and <span class="math inline">\(\tilde{x}_3\)</span> is the activation after layer 2 in the new model. <span class="math inline">\(\text{Proj}\)</span> is the projection to the two dimensional subspace derived from the principal axes of the layer 2 activations in the orignal model. <span class="math inline">\(\text{warp}\)</span> is the transformation in the PCA subspace as shown in <a href="#fig-intervenepca" class="quarto-xref">Figure&nbsp;7</a>. <span class="math inline">\(\text{weight}\)</span> is a scaling parameter.</p>
+<p>The first term in <a href="#eq-loss" class="quarto-xref">Equation&nbsp;1</a> tries to match the PCA of the new model with the transformed PCA. The second term in <a href="#eq-loss" class="quarto-xref">Equation&nbsp;1</a> tries to match the activations after layer 3 of the new model with the original activations. This is to preserve the original unembeddings which had an accuracy of over 95% on the test dataset. The exact transformation used for <span class="math inline">\(\text{warp}\)</span> is shown in <a href="#sec-warp" class="quarto-xref">Section&nbsp;8</a>.</p>
+<div id="fig-newmodel" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-newmodel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="newmodel.svg" style="width:70.0%;height:70.0%" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-newmodel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: New model architecture.
+</figcaption>
+</figure>
+</div>
+<div id="fig-intervenepca" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-intervenepca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pca_country_model.png" style="width:70.0%;height:70.0%" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-intervenepca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: PCA transformation.
+</figcaption>
+</figure>
+</div>
+<p>We trained the new model for 1000 epochs on the train dataset with the following parameters:<br>
+1. <code>weight = 0.05</code><br>
+2. <code>batch size = 64</code><br>
+3. Adam optimizer with <code>learning rate = 0.01</code> and <code>weight_decay= 0.001</code><br>
+</p>
+<p>The test performance is shown below:</p>
+<div id="fig-test" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./eval_new_model_20260608_003626_test.png" style="width:70.0%;height:70.0%" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: New model’s performance on test data.
+</figcaption>
+</figure>
+</div>
+<p>We obtain the following PCA plots on layer 2 activations of the new model.</p>
+<div id="fig-test" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./pca_new_model_20260608_003626.png" style="width:70.0%;height:70.0%" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: PCA on second-layer activations of the new model for all features.
+</figcaption>
+</figure>
+</div>
+<p><br>
+</p>
+<div id="fig-3d-new" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-3d-new-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe src="./pca_new_model_20260608_003626.html" width="100%" height="500px" style="border:none;">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3d-new-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: 3D PCA on second-layer activations of the new model for all features.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-lda_lecture_notes" class="csl-entry" role="listitem">
+<span>“Lecture Note: Latent Dirichlet Allocation.”</span> n.d. <a href="https://jlab.soe.ucsc.edu/nlp-wiki/lib/exe/fetch.php?media=papers:lecture-note-lda.pdf" class="uri">https://jlab.soe.ucsc.edu/nlp-wiki/lib/exe/fetch.php?media=papers:lecture-note-lda.pdf</a>.
+</div>
+</div>
+</section>
+<section id="appendix" class="level2">
+<h2 class="anchored" data-anchor-id="appendix">Appendix</h2>
+</section>
+<section id="derivation-of-lda" class="level2">
+<h2 class="anchored" data-anchor-id="derivation-of-lda">Derivation of LDA</h2>
+<div id="fig-classes" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-classes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./classes.svg" style="width:50.0%;height:50.0%" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-classes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Illustration of two classes of vectors.
+</figcaption>
+</figure>
+</div>
+<p>Given a collection of two classes of vectors in <span class="math inline">\(\mathbb{R}^d\)</span> (see <a href="#fig-classes" class="quarto-xref">Figure&nbsp;11</a>), the LDA objective seeks a direction <span class="math inline">\(w \in \mathbb{R}^d\)</span> solving the following problem</p>
+<p><span id="eq-objective"><span class="math display">\[\max_{\|w\|=1}\frac{(\langle \mu_1, w \rangle - \langle \mu_2, w \rangle)^2}{\sum_{i} (\langle \mu_1, w \rangle - \langle u_i, w\rangle)^2 + \sum_{i} (\langle \mu_2, w \rangle - \langle v_i, w\rangle)^2} \tag{2}\]</span></span></p>
+<p>This objective seeks to project the two classes of vectors onto a one dimensional space (<span class="math inline">\(w\)</span>) so as to incentivize the distance between the projections of the means, <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> onto <span class="math inline">\(w\)</span> (the numerator), and to penalize the squared distances between the projected means (<span class="math inline">\(\langle \mu_1, w \rangle\)</span> and <span class="math inline">\(\langle \mu_2, w \rangle\)</span>) and projected vectors (<span class="math inline">\(\langle u_i, w\rangle\)</span> and <span class="math inline">\(\langle v_i, w\rangle\)</span>). Informally, you want a projection so that the projections of the means are as far as possible and the variation of the projections for each of two classes is small as possible.</p>
+<p>But there is a reason why the objective is stated as in <a href="#eq-objective" class="quarto-xref">Equation&nbsp;2</a> in that form. The answer lies i nthe fact that setting it up this way turns it into an eigenvalue problem, which we describe below.</p>
+<p>Firstly, note that <span id="eq-reduce"><span class="math display">\[\begin{align}
+(\langle \mu_1, w \rangle - \langle \mu_2, w \rangle)^2 &amp;= (w^T(\mu_1 - \mu_2))^2\\
+&amp;= (w^T(\mu_1 - \mu_2)) (w^T(\mu_1 - \mu_2))\\
+&amp;= (w^T(\mu_1 - \mu_2))((\mu_1 - \mu_2)^Tw)\\
+&amp;= w^T (\mu_1 - \mu_2)(\mu_1 - \mu_2)^T w\\
+&amp;= w^T S w,
+\end{align} \tag{3}\]</span></span></p>
+<p>where <span class="math inline">\(S:= (\mu_1 - \mu_2)(\mu_1 - \mu_2)^T\)</span>. Then note that</p>
+<p><span class="math display">\[
+\begin{align}
+\sum_i (\langle \mu_1, w \rangle - \langle u_i, w\rangle)^2 &amp;= \sum_i \langle \mu_1 - u_i, w \rangle^2\\
+&amp;= \sum_i (w^T (\mu_1 - u_i))^2\\
+&amp;= \sum_i w^TS_{1i}w,
+\end{align}
+\]</span> where <span class="math inline">\(S_{1i}:= (\mu_1 - u_i)(\mu_1 - u_i)^T\)</span>. Let <span class="math inline">\(\tilde{S}_1 = \sum_{i} S_{1i}\)</span>. Then we have</p>
+<p><span class="math display">\[
+\begin{align}
+\sum_i (\langle \mu_1, w \rangle - \langle u_i, w\rangle)^2 &amp;= w^T\tilde{S}_1w.
+\end{align}
+\]</span></p>
+<p>Similarly, setting <span class="math inline">\(\tilde{S}_2 = \sum_{i} S_{2i}\)</span>, where <span class="math inline">\(S_{2i}:= (\mu_2 - v_i)(\mu_1 - v_i)^T\)</span>, we get</p>
+<p><span class="math display">\[
+\begin{align}
+\sum_i (\langle \mu_2, w \rangle - \langle v_i, w\rangle)^2 &amp;= w^T\tilde{S}_2w.
+\end{align}
+\]</span></p>
+<p>Hence, the denominator in <a href="#eq-objective" class="quarto-xref">Equation&nbsp;2</a> becomes</p>
+<p><span class="math display">\[w^T\tilde{S}_1w + w^T\tilde{S}_2w := w^T\tilde{S}w,\]</span> where <span id="eq-final"><span class="math display">\[\tilde{S}:= \tilde{S}_1 + \tilde{S}_2 \tag{4}\]</span></span></p>
+<p>Thus, from <a href="#eq-reduce" class="quarto-xref">Equation&nbsp;3</a> and <a href="#eq-final" class="quarto-xref">Equation&nbsp;4</a>, <a href="#eq-objective" class="quarto-xref">Equation&nbsp;2</a> is reduced to <span class="math display">\[
+\max_{\|w\|=1} \frac{w^TSw}{w^T\tilde{S}w}
+\]</span></p>
+<p>Now we assume that <span class="math inline">\(\tilde{S}\)</span> is invertible, which is equivalent to saying that all the vectors <span class="math inline">\(\mu_1 - u_i\)</span> and <span class="math inline">\(\mu_2 -v_i\)</span> are linearly independent.</p>
+<p>Making the substitution <span class="math inline">\(\tilde{w}:= \tilde{S}^{\frac{1}{2}}w\)</span>, <span class="math display">\[
+\begin{align}
+\frac{w^TSw}{w^T\tilde{S}w} &amp;= \frac{w^TSw}{w^T\tilde{S}^{\frac{1}{2}}\tilde{S}^{\frac{1}{2}}w}\\
+&amp;= \frac{(\tilde{S}^{-\frac{1}{2}}\tilde{w})^T S(\tilde{S}^{-\frac{1}{2}}\tilde{w})}{\|\tilde{S}^{\frac{1}{2}}w\|^2}\\
+&amp;= \frac{\tilde{w}^T \tilde{S}^{-\frac{1}{2}} S\tilde{S}^{-\frac{1}{2}}\tilde{w}}{\|\tilde{S}^{\frac{1}{2}}w\|^2}\\
+&amp;= \frac{\tilde{w}^T \tilde{S}^{-\frac{1}{2}} S\tilde{S}^{-\frac{1}{2}}\tilde{w}}{\|\tilde{w}\|^2}
+\end{align}
+\]</span></p>
+<p>Thus, <a href="#eq-objective" class="quarto-xref">Equation&nbsp;2</a>, reduces to the eigenvalue problem: <span class="math display">\[
+\max_{\tilde{w}} \frac{\tilde{w}^T \tilde{S}^{-\frac{1}{2}} S\tilde{S}^{-\frac{1}{2}}\tilde{w}}{\|\tilde{w}\|^2}
+\]</span></p>
+<p>This is the Rayleigh quotient corresponding to the highest eigenvalue of <span class="math inline">\(\tilde{S}^{-\frac{1}{2}} S\tilde{S}^{-\frac{1}{2}}\)</span>. This motivates why we state LDA in the form of <a href="#eq-objective" class="quarto-xref">Equation&nbsp;2</a>.</p>
+</section>
+<section id="sec-warp" class="level2">
+<h2 class="anchored" data-anchor-id="sec-warp">Warp transformation</h2>
+<p>Here below <code>f_pos</code> denotes the transformation applied to the points in the positive class, and <code>f_neg</code> denotes the transformation applied to the points in the negative class.<br>
+</p>
+<p><code>f_pos</code> first shifts the points vertically by 2 and applies a spiral rotation about <span class="math inline">\(\frac{\pi}{4}\)</span>. <code>f_neg</code> first projects the points on the two diagonal axes (<span class="math inline">\(y = 0.25x\)</span> and <span class="math inline">\(y = -0.25x\)</span>) and breaks the four ends of the cross to make a horizontal figure 8.</p>
+<div id="d715f6f1" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_pos(x, y):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    x, y <span class="op">=</span> x, y<span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    r, theta <span class="op">=</span> to_polar(x, y)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    r_1, theta_1 <span class="op">=</span> r<span class="op">+</span>theta, <span class="dv">4</span><span class="op">*</span>(theta<span class="op">-</span>np.pi<span class="op">/</span><span class="dv">4</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> to_cart(r_1, theta_1)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_neg(x, y):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> y <span class="op">&lt;</span> <span class="fl">0.25</span><span class="op">*</span>x:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        unit_x, unit_y <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>np.sqrt(<span class="dv">1</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="fl">0.25</span><span class="op">**</span><span class="dv">2</span>), <span class="fl">0.25</span><span class="op">/</span>np.sqrt(<span class="dv">1</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="fl">0.25</span><span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        proj <span class="op">=</span> (x <span class="op">*</span> unit_x <span class="op">+</span> y<span class="op">*</span> unit_y)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> <span class="dv">4</span><span class="op">*</span>proj<span class="op">*</span>unit_x, <span class="dv">4</span><span class="op">*</span>proj<span class="op">*</span>unit_y</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        unit_x, unit_y <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">/</span>np.sqrt(<span class="dv">1</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="fl">0.25</span><span class="op">**</span><span class="dv">2</span>), <span class="fl">0.25</span><span class="op">/</span>np.sqrt(<span class="dv">1</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="fl">0.25</span><span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        proj <span class="op">=</span> (x <span class="op">*</span> unit_x <span class="op">+</span> y<span class="op">*</span> unit_y)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> <span class="dv">4</span><span class="op">*</span>proj<span class="op">*</span>unit_x, <span class="dv">4</span><span class="op">*</span>proj<span class="op">*</span>unit_y</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x<span class="op">&lt;-</span><span class="dv">6</span> <span class="kw">and</span> y <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> x, <span class="dv">9</span><span class="op">/</span><span class="dv">20</span><span class="op">*</span>x <span class="op">+</span> <span class="dv">9</span><span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x<span class="op">&lt;-</span><span class="dv">6</span> <span class="kw">and</span> y<span class="op">&lt;</span><span class="dv">0</span>:</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> x, <span class="op">-</span><span class="dv">9</span><span class="op">/</span><span class="dv">20</span><span class="op">*</span>x <span class="op">-</span> <span class="dv">9</span><span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x<span class="op">&gt;</span><span class="dv">6</span> <span class="kw">and</span> y<span class="op">&gt;</span><span class="dv">0</span>:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> x, <span class="op">-</span><span class="dv">9</span><span class="op">/</span><span class="dv">20</span><span class="op">*</span>x <span class="op">+</span> <span class="dv">9</span><span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x<span class="op">&gt;</span><span class="dv">6</span> <span class="kw">and</span> y<span class="op">&lt;</span><span class="dv">0</span>:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> x, <span class="dv">9</span><span class="op">/</span><span class="dv">20</span><span class="op">*</span>x <span class="op">-</span> <span class="dv">9</span><span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="op">-</span><span class="dv">10</span>:</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> x <span class="op">+</span> <span class="dv">2</span>, <span class="op">-</span>y<span class="op">-</span><span class="dv">1</span> </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> x <span class="op">-</span> <span class="dv">4</span>, <span class="op">-</span>y<span class="op">-</span><span class="dv">2</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x, y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="spiral" class="level2">
+<h2 class="anchored" data-anchor-id="spiral">Spiral</h2>
+<p>Our initial goal was to get a <a href="https://developers.google.com/machine-learning/crash-course/DPE/tp-il-neural-net-intro-spiral">spiral representation</a>, but we did not succeed in this endeavor.</p>
+<div id="fig-spiralintervenepca" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spiralintervenepca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="pca_country.png" style="width:70.0%;height:70.0%" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spiralintervenepca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Sprial intervention on PCA.
+</figcaption>
+</figure>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
