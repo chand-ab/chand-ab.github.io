@@ -1,0 +1,7 @@
+{
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "sentences_file": "data/sentences/3tok.txt",
+  "n_samples": 200,
+  "seed": 42,
+  "run_id": "20260526_143827"
+}

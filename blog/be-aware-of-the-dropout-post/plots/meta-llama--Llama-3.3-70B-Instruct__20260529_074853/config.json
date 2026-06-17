@@ -1,0 +1,7 @@
+{
+  "model_id": "meta-llama/Llama-3.3-70B-Instruct",
+  "sentences_file": "data/sentences/7tok.txt",
+  "n_samples": 200,
+  "seed": 42,
+  "run_id": "20260529_074853"
+}

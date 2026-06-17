@@ -1,0 +1,13 @@
+{
+  "model_id": "meta-llama/Llama-3.3-70B-Instruct",
+  "sentences_file": "data/sentences/7tok.txt",
+  "n_samples": 50,
+  "seed": 42,
+  "dropout_rate": 0.7,
+  "dropout_target": "both",
+  "first_layer": 0,
+  "last_layer": 79,
+  "layer": 39,
+  "token_pos": -1,
+  "run_id": "20260607_011013"
+}

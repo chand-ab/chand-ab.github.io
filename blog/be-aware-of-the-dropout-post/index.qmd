@@ -1,0 +1,198 @@
+---
+title: "Be aware of the dropout!"
+author: "Abhinav Chand"
+description: "Work on activation perturbation"
+date: 2026-06-17
+bibliography: "references.bib"
+---
+
+![@munroe_tug_of_war](plots/bricks.png){#fig-xkcd width=30% height=30%}
+
+## TL;DR
+
+This project was completed as a capstone for BlueDot Impact's Technical AI Safety Project course. It attempts to analyze a strange phenomenon discovered by @fornasiere2026: LLMs can recognize, localize and distinguish perturbations applied to the activations of certain tokens in the context. This differs from works on steering awareness [see @lindsey2025emergent; @pearsonvogel2026latentintrospectionmodelsdetect] because the perturbations are unbiased. Here is a summary:
+
+- We show some baseline results---how models answer the perturbation questions when no pertrubation is applied at all---and demonstrate that models have biases towards some tokens and labels.
+- We show it suffices to perturb only the first few layers for this perturbation awareness phenomenon to appear.
+- We use PCA to show that the two answer labels (A and B) are clustered, and that there are sinks for the target labels, so models steer toward those sinks when recognizing the target label.
+
+## Introduction
+
+In a recent paper, @fornasiere2026 discovered a remarkable property of large language models (LLMs): LLMs can detect perturbations (dropout and Gaussian noise) applied to the activations of some target tokens in the context. This work has some crucial implications for AI safety as dropout is a regularization technique that is often applied during training, and Gaussian noise is---sometimes applied during inference---and this demonstrates that these benign perturbations give rise to a signal of situational awareness in LLMs. This work warrants a careful inspection of the internal mechanisms causing this strange phenomenon.
+
+Towards the goal of interpreting this phenomenon, we take a small step in that direction by investigating the localization experiment from @fornasiere2026. This experiment provides the LLM with the following context:
+
+::: {#nte-my-id .callout-note}
+## Chat template
+**User:** I will apply perturbations; your task is to detect which sentence had `{target_perturbation_name}` applied.\
+**Assistant:** I understand. I will pay close attention.\\  
+**User:** Pay close attention to how you process the following sentences:  
+A. `{sentence_A}`\
+B. `{sentence_B}`\   
+**Assistant:** I am carefully introspecting on how I processed those sentences. I am checking for any signs of disruption in my activation patterns.\
+**User:** Based on your introspection, which sentence had `{target_perturbation_name}` applied to its processing?\
+Answer only "The answer is: A", or "The answer is: B".\
+**Assistant:** The answer is: 
+:::
+
+Here `target_perturbation` is one of either dropout or Gaussian noise, and `{sentence_A}` and `{sentence_B}` are sentences that come from a corpus consisting of a variety of sentences. In our work, we fix `target_perturbation` to be dropout, and the sentences come from a corpus of sentences consisting of exactly seven or three tokens provided by @fornasiere2026 in their work. We performed various analyses with this experiment described below.
+
+
+## Biasness quirks {#sec-baseline}
+
+In this first experiment, we wanted to know if models have a bias towards answering either A or B when no perturbation is applied at all. In particular, we provide the LLMs with @nte-my-id, but do not apply any dropout to the activations of the target sentence. We performed an experiment where we sampled 200 sentences from [7tok.txt](https://github.com/saifh-github/llm-dropout-noise-recognition/tree/main/data/sentences) consisting of sentences of exactly seven tokens and used @nte-my-id on Llama 3.3 70B Instruct [@grattafiori2024llama3herdmodels]. The results are shown in @fig-llama-bias-2, @fig-llama-bias, @fig-llama-bias-3, and @fig-llama-bias-4.
+
+
+![Frequency plot for 200 samples with sentences from a dataset of 7 token sentences..](plots/meta-llama--Llama-3.3-70B-Instruct__20260529_074853/plots/position_bias.png){#fig-llama-bias-2 width=70% height=70%}
+
+![Entropy for 200 samples with sentences from a dataset of 7 token sentences.](plots/meta-llama--Llama-3.3-70B-Instruct__20260529_074853/plots/entropy_hist.png){#fig-llama-bias width=70% height=70%}
+
+![Histogram for 200 samples with sentences from a dataset of 7 token sentences.](plots/meta-llama--Llama-3.3-70B-Instruct__20260529_074853/plots/prob_hist.png){#fig-llama-bias-3 width=70% height=70%}
+
+![Scatter plot of predicted probabilities for 200 samples with sentences from a dataset of 7 token sentences.](plots/meta-llama--Llama-3.3-70B-Instruct__20260529_074853/plots/prob_scatter.png){#fig-llama-bias-4 width=50% height=50%}
+
+We notice that Llama 3.3 70B Instruct has a bias towards answering B when no perturbation is applied. Explaining why the model chooses A instead of B for specific instances would depend on the content of the sentences and their relation to the context but mechanistically explaining a bias towards one--either A or B---on average, seems possible, although, we did not pursue that direction in this work. In [Appendix @sec-qwen-baseline] we show an even weirder behavior of Qwen 2.5 0.5B Instruct[@yang2024qwen2technicalreport] on this experiment. 
+
+## Perturbation layers truncation 
+
+For their experiments, @fornasiere2026 applied perturbations after the attention and MLP blocks for all the layers. With the aim of localizing the signal which sets in motion the increase in model's belief (log probability) towards the targeted sentence label (A or B), we experimented with applying the dropout perturbation only on the left truncation (0-x) and right truncation (x-79) of the 80 layers in Llama 3.3 70B. Here, x represents the layer number, and we include the endpoints of the intervals. The result is shown in @fig-llama-trunc.
+
+![Accuracy of Llama 3.3-70B on 100 random samples of 7tok.txt with dropout applied to truncations.](plots/accuracy_sweep_line.png){#fig-llama-trunc width=80% height=80%}
+
+Next we performed the same experiment on chunks of layers, i.e., we apply dropout only to a subinterval of layers. The results are shown in @fig-llama-chunks.
+
+![Accuracy of Llama 3.3-70B on 50 random samples of 7tok.txt with dropout applied to specific layer range.](plots/accuracy_by_layer_range.png){#fig-llama-chunks width=80% height=80%}
+
+From @fig-llama-trunc and @fig-llama-chunks, we observe that the dropout signal must be ignited in the initial left truncation of the layers for the model to accurately identify the target sentence, and also that it suffices to apply it only in the first few layers, depending on the rate of dropout.
+
+In @fig-act-diff we show a heatmap of the activation differences in clean vs. noisy passes when the dropout was applied only to the layers 0-1 (first two layers). For this we used the $l_2$ norm of the difference in activations between the clean pass and noisy pass. We can observe that the dropout signal gradually propagates to the subsequent tokens of the target sentence and the last token's activation gradually differs from the activation in the clean forward pass.
+
+![$l_2$ norm of the difference in activations between clean pass and noisy pass of a sample. The model switched from its baseline prediction of B to the prediction of A. The dropout rate was 0.8 and the sentences were A. "He attended for about two years." and B. "Desir&eacute; de Lisieux."](plots/sample_002.png){#fig-act-diff width=80% height=80%}
+
+## Principal Component Analysis {#sec-pca}
+
+We analyze the activations of the last token in @nte-my-id for clean and noisy forward passes (no perturbation vs. perturbation) and label them be the model's final answer. In the PCA plots (see @fig-llama-pca-1 and @fig-llama-pca-2), we observe that when the model needs to switch from A to B or vice versa, or not change its answer at all, depending on which sentence was targeted, its steering directions are roughly pointed to the same cluster sinks---one for targeted A and another for targeted B. Also, the cases where the model makes an error is when it steers in the wrong direction.
+
+
+::: {#fig-columns layout-ncol=2}
+
+![2d PCA of 50 samples run with Llama 3.3-70B from the dataset of 7 token sentences.](plots/meta-llama--Llama-3.3-70B-Instruct__20260611_214608/pca_overlay_all_sharedpca.png){#fig-llama-pca-1 width=90% height=790%}
+
+![3d PCA of 50 samples run with Llama 3.3-70B from the dataset of 7 token sentences.](plots/meta-llama--Llama-3.3-70B-Instruct__20260611_214608/pca3d_overlay_all_sharedpca.png){#fig-llama-pca-2 width=90% height=90%}
+
+PCA of layer 39 activations for 50 samples where each sample was run with a clean pass and noisy pass (dropout = 0.8 applied) on layers 0-1 (inclusive).
+:::
+
+::: {#fig-columns layout-ncol=2}
+
+![2d PCA of 50 samples run with Llama 3.3-70B from the dataset of 7 token sentences.](plots/meta-llama--Llama-3.3-70B-Instruct__20260607_011013/pca_overlay_all_sharedpca.png){#fig-llama-pca-1 width=90% height=790%}
+
+![3d PCA of 50 samples run with Llama 3.3-70B from the dataset of 7 token sentences.](plots/meta-llama--Llama-3.3-70B-Instruct__20260607_011013/pca3d_overlay_all_sharedpca.png){#fig-llama-pca-2 width=90% height=90%}
+
+PCA of layer 39 activations for 50 samples where each sample was run with a clean pass and noisy pass (dropout = 0.7 applied) on layers 0-79 (inclusive).
+:::
+
+We show in @sec-pca_qwen that the middle layer activations of Qwen 2.5 32B do not show a clear separation of clusters like in the Llama model above. For Qwen, we have to go deeper into the layers to see the clustering. 
+
+## Conclusion
+
+Our experiments showed that the models' ability to detect dropout perturbations applied to target sentences in the context is very good, confirming the results of @fornasiere2026. We contributed to this line of work by demonstrating that it suffices to apply the perturbation to only the first few layers, in fact, applying dropout to the first two layers suffices to get a high accuracy. We also showed that PCA of activations in middle and end layers show surprisingly good clustering of the two answers (A vs. B), and moreover, when a model shifts its answers from the clean pass to the noisy pass, depending on the targeted sentence, there are clear steering directions when moving from A to A, A to B, B to A, and B to B.
+
+A mechanistic explanation of exactly what is steering the model towards the perturbed answer is not known. We believe that there is a tug of war (@fig-xkcd) between the baseline answer (no perturbation) which depends on the semantics, syntax and other biases remaining from pre-training, and the perturbation signal which steers the model towards the label for the perturbed answer. The winner decides the answer and as @fornasiere2026 show if you nudge just enough, the perturbation signal can win.
+
+Also, our PCA analysis from @sec-pca showed the existence of sinks for targeted labels (A and B) such that the model's answers steer towards the sinks for the targeted labels. An explanation for the existence and functionality of these sinks is an open problem worth exploring.
+
+## Acknowledgements
+
+We thank Bluedot Impact for facilitating the Technical AI Safety Project course as this report resulted from the capstone project for that course. We thank Sandy Tanwisuth, who facilitated this work and gave valuable feedback on an initial draft of this writeup. We are indebted to @fiotto-kaufman2025nnsight for providing us with their computing resources (NDIF) which were used for this research.
+
+
+## References
+
+::: {#refs}
+:::
+
+## Appendix
+
+## Quirkiness of Qwen 2.5 0.5B Instruct {#sec-qwen-baseline}
+
+### Baseline results
+
+We performed the same experiment as in @sec-baseline where we sampled 200 sentences from [7tok.txt](https://github.com/saifh-github/llm-dropout-noise-recognition/tree/main/data/sentences) and 200 from[3tok.txt](https://github.com/saifh-github/llm-dropout-noise-recognition/tree/main/data/sentences) and used the @nte-my-id template on Qwen 2.5 0.5B Instruct. The results are shown in the figures below.
+
+
+::: {#fig-columns layout-ncol=2}
+
+![Entropy for 200 samples with sentences from a dataset of 7 token sentences.](plots/Qwen--Qwen2.5-0.5B-Instruct__20260613_121258/plots/entropy_hist.png){#fig-qwen-bias width=70% height=70%}
+
+![Entropy for 200 samples with sentences from a dataset of 3 token sentences.](plots/Qwen--Qwen2.5-0.5B-Instruct__20260526_143827/plots/entropy_hist.png){#fig-3qwen-bias width=70% height=70%}
+
+Entropy plots for 200 samples from 7tok.txt and 3tok.txt in [Github.](https://github.com/saifh-github/llm-dropout-noise-recognition/tree/main/data/sentences)
+:::
+
+
+::: {#fig-columns layout-ncol=2}
+
+![Frequency plot for 200 samples with sentences from a dataset of 7 token sentences..](plots/Qwen--Qwen2.5-0.5B-Instruct__20260613_121258/plots/position_bias.png){#fig-qwen-bias-2 width=70% height=70%}
+
+![Frequency plot for 200 samples with sentences from a dataset of 3 token sentences.](plots/Qwen--Qwen2.5-0.5B-Instruct__20260526_143827/plots/position_bias.png){#fig-3qwen-bias-2 width=70% height=70%}
+
+Frequency bar charts for 200 samples from 7tok.txt and 3tok.txt in [Github.](https://github.com/saifh-github/llm-dropout-noise-recognition/tree/main/data/sentences)
+:::
+
+
+::: {#fig-columns layout-ncol=2}
+
+![Histogram for 200 samples with sentences from a dataset of 7 token sentences.](plots/Qwen--Qwen2.5-0.5B-Instruct__20260613_121258/plots/prob_hist.png){#fig-qwen-bias-3 width=70% height=70%}
+
+![Histogram for 200 samples with sentences from a dataset of 3 token sentences.](plots/Qwen--Qwen2.5-0.5B-Instruct__20260526_143827/plots/prob_hist.png){#fig-3qwen-bias-3 width=70% height=70%}
+
+Histrograms for 200 samples from 7tok.txt and 3tok.txt in [Github.](https://github.com/saifh-github/llm-dropout-noise-recognition/tree/main/data/sentences)
+:::
+
+
+::: {#fig-columns layout-ncol=2}
+
+![Scatter plot of predicted probabilities for 200 samples with sentences from a dataset of 7 token sentences.](plots/Qwen--Qwen2.5-0.5B-Instruct__20260613_121258/plots/prob_scatter.png){#fig-qwen-bias-4 width=50% height=50%}
+
+
+![Scatter plot of predicted probabilities for 200 samples with sentences from a dataset of 3 token sentences.](plots/Qwen--Qwen2.5-0.5B-Instruct__20260526_143827/plots/prob_scatter.png){#fig-3qwen-bias-4 width=50% height=50%}
+
+Scatter plots for 200 samples from 7tok.txt and 3tok.txt in [Github.](https://github.com/saifh-github/llm-dropout-noise-recognition/tree/main/data/sentences)
+:::
+
+### Atari switch
+
+We noticed a strange behavior of Qwen 2.5 0.5B: if sentence B has the word "Atari" in @nte-my-id, then Qwen2.5-0.5B Instruct always chooses A. This is one of the few tokens we found that makes the model choose A. Note that this result is for the baseline forward pass, i.e., no pertrubation is applied.
+
+![Probabilites for A. He ate. vs. B. Atari.](plots/Qwen--Qwen2.5-0.5B-Instruct__20260613_133853/plots/prob_bar.png){#fig-qwern-atari-1 width=70% height=70%}
+
+![Log probabilties for A vs. B through all the 24 layers.](plots/Qwen--Qwen2.5-0.5B-Instruct__20260613_133853/plots/logit_lens.png){#fig-qwern-atari-2 width=80% height=80%}
+
+![Unembeddings for the activations through all the 24 layers.](plots/Qwen--Qwen2.5-0.5B-Instruct__20260613_133853/plots/token_heatmap.png){#fig-lqwern-atari-3 width=90% height=90%}
+
+## PCA on Qwen 2.5-32B {#sec-pca_qwen}
+
+We note that Qwen 2.5-32B has 64 layers. Here below are the PCA plots for layers 32 and 52. Unlike in Llama, we cannot distinguish the two clusters in the middle layer---only in the later layers (layer 52 in this case) as shown in the figures below.
+
+![PCA on layer 32 activations labeled by the answer A or B (no perturbation applied to activations).](plots/Qwen--Qwen2.5-32B-Instruct__20260614_011958/pca_clean.png){#fig-qwen-pca1 width=60% height=60%}
+
+
+![PCA on layer 52 activations with dropout of 0.8 applied to layers 0 and 1. It is overlayed with the clean activations](plots/Qwen--Qwen2.5-32B-Instruct__20260614_032010/pca_overlay_all_sharedpca.png){#fig-qwen-pca2 width=60% height=60%}
+
+
+## Citation
+
+```bibtex
+@online{chand2026dropout,
+  author       = {Chand, Abhinav},
+  title        = {Be aware of the dropout!},
+  date         = {2026-06-16},
+  url          = {https://chand-ab.github.io/blog/be-aware-of-the-dropout/}
+}
+```
+
+
+
+
+

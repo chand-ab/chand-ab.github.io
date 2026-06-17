@@ -1,0 +1,13 @@
+{
+  "model_id": "Qwen/Qwen2.5-32B-Instruct",
+  "sentences_file": "data/sentences/7tok.txt",
+  "n_samples": 100,
+  "seed": 2,
+  "dropout_rate": 0.8,
+  "dropout_target": "both",
+  "first_layer": 0,
+  "last_layer": 1,
+  "layer": 52,
+  "token_pos": -1,
+  "run_id": "20260614_032010"
+}

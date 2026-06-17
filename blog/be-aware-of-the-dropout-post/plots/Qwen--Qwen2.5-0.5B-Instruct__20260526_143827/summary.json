@@ -1,0 +1,13 @@
+{
+  "n_samples": 200,
+  "pct_chose_a": 1.0,
+  "pct_chose_b": 99.0,
+  "pct_argmax_a": 1.0,
+  "pct_argmax_b": 99.0,
+  "pct_argmax_other": 0.0,
+  "mean_prob_a": 0.3355887731180205,
+  "mean_prob_b": 0.6095034817204654,
+  "mean_lse_a": 23.1273496055603,
+  "mean_lse_b": 23.73273271560669,
+  "mean_entropy": 0.8644076317548752
+}

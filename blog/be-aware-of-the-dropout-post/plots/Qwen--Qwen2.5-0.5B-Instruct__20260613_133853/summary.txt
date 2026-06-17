@@ -1,0 +1,14 @@
+Model      : Qwen/Qwen2.5-0.5B-Instruct
+Sentence A : 'He ate.'
+Sentence B : 'Atari.'
+Perturb    : B
+Dropout    : p=0.8, target=both
+
+Clean pass:
+  P(A)=0.5442  P(B)=0.4230
+  predicted=A  argmax=A
+  entropy=0.838 nats
+Noisy pass:
+  P(A)=0.3790  P(B)=0.5492
+  predicted=B  argmax=B
+  entropy=0.943 nats
