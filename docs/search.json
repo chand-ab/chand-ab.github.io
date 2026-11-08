@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Technical posts on AI, ML, and related topics.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBe aware of the dropout!\n\n\nWork on activation perturbation\n\n\n\n\n\nJun 17, 2026\n\n\nAbhinav Chand\n\n\n\n\n\n\n\n\n\n\n\n\nTechnical AI Safety Puzzle\n\n\nSolution to Bluedot’s puzzle\n\n\n\n\n\nJun 14, 2026\n\n\nAbhinav Chand\n\n\n\n\n\n\n\n\n\n\n\n\nLinear Regression for the masses\n\n\nBlurb on linear regression\n\n\n\n\n\nApr 28, 2026\n\n\nAbhinav Chand\n\n\n\n\n\n\n\n\n\n\n\n\nConfused about the confusion matrix\n\n\nAccuracy, precision, recall and all that.\n\n\n\n\n\nApr 5, 2026\n\n\nAbhinav Chand\n\n\n\n\n\nNo matching items"
+    "text": "Technical posts on AI, ML, and related topics.\n\n\n\n\n\n\n\n\n\n\n\n\nInvestigating the Stability of Natural Language Autoencoders\n\n\nTesting how robust NLA verbalizations are to changes in training seed, paraphrasing, and targeted text edits.\n\n\n\n\n\nSep 22, 2026\n\n\nKaylee Vo, Daniel Yoo, Abhinav Chand, Gonçalo Paulo\n\n\n\n\n\n\n\n\n\n\n\n\nBe aware of the dropout!\n\n\nWork on activation perturbation\n\n\n\n\n\nJun 17, 2026\n\n\nAbhinav Chand\n\n\n\n\n\n\n\n\n\n\n\n\nTechnical AI Safety Puzzle\n\n\nSolution to Bluedot’s puzzle\n\n\n\n\n\nJun 14, 2026\n\n\nAbhinav Chand\n\n\n\n\n\n\n\n\n\n\n\n\nLinear Regression for the masses\n\n\nBlurb on linear regression\n\n\n\n\n\nApr 28, 2026\n\n\nAbhinav Chand\n\n\n\n\n\n\n\n\n\n\n\n\nConfused about the confusion matrix\n\n\nAccuracy, precision, recall and all that.\n\n\n\n\n\nApr 5, 2026\n\n\nAbhinav Chand\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "teaching/materials/ode_summer24/ode_summer24.html",

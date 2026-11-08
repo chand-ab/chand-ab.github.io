@@ -1,0 +1,5 @@
+- title: "Investigating the Stability of Natural Language Autoencoders"
+  path: https://blog.eleuther.ai/nla-stability/
+  date: 2026-09-22
+  author: Kaylee Vo, Daniel Yoo, Abhinav Chand, Gonçalo Paulo
+  description: "Testing how robust NLA verbalizations are to changes in training seed, paraphrasing, and targeted text edits."

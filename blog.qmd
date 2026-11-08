@@ -1,7 +1,9 @@
 ---
 title: "Blog"
 listing:
-  contents: blog
+  contents: 
+    - "blog"
+    - "blog/external.yml"
   sort: "date desc"
   type: default
   categories: true
