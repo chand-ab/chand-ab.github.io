@@ -158,14 +158,14 @@
     "href": "teaching.html",
     "title": "Teaching",
     "section": "",
-    "text": "Spring 2026\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nDS 740: Data Mining & Machine Learning\nFall 2025\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nMath 109: Precalculus Algebra\nSummer 2024\nMath 340: Differential Equations\nSpring 2021\nMath 250: Applied Calculus\nFall 2020\nPrecalculus Algebra"
+    "text": "Fall 2026\nMath 324: Linear Algebra\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nSpring 2026\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nDS 740: Data Mining & Machine Learning\nFall 2025\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nMath 109: Precalculus Algebra\nSummer 2024\nMath 340: Differential Equations"
   },
   {
     "objectID": "teaching.html#as-instructor-of-record",
     "href": "teaching.html#as-instructor-of-record",
     "title": "Teaching",
     "section": "",
-    "text": "Spring 2026\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nDS 740: Data Mining & Machine Learning\nFall 2025\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nMath 109: Precalculus Algebra\nSummer 2024\nMath 340: Differential Equations\nSpring 2021\nMath 250: Applied Calculus\nFall 2020\nPrecalculus Algebra"
+    "text": "Fall 2026\nMath 324: Linear Algebra\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nSpring 2026\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nDS 740: Data Mining & Machine Learning\nFall 2025\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nMath 109: Precalculus Algebra\nSummer 2024\nMath 340: Differential Equations"
   },
   {
     "objectID": "teaching.html#as-recitation-instructor",
@@ -179,7 +179,7 @@
     "href": "index.html",
     "title": "Abhinav Chand",
     "section": "",
-    "text": "I am an Assistant Professor in the Mathematics Department at the University of Wisconsin-Eau Claire.\nCurrent teaching:\n\nDS 150 Computing in Python: Fundamentals and Procedural Programming\n\nDS 740 Data Mining & Machine Learning\n\nCurrent research interests:\n\nNetwork Science and Graph Neural Networks\nDeep learning\nMechanistic Interpretability\n\nTeaching philosophy TLDR:\n\nDevelop the habit of learning from first principles\n\nMotivate everything\nWell motivated and engaging active learning problem sets with appropriate scaffolding (TILT)\n\nStudents build things that they are passionate about through mini-projects and mini-hackathons\nTeaching stack: Mentimeter, Manim, Nbgrader, markdown2canvas, codeshare"
+    "text": "I am an Assistant Professor in the Mathematics Department at the University of Wisconsin-Eau Claire.\nCurrent teaching:\n\nMath 324: Linear Algebra\n\nDS 150: Computing in Python: Fundamentals and Procedural Programming\n\nCurrent research interests:\n\nNetwork Science and Graph Neural Networks\nDeep learning\nMechanistic Interpretability\n\nTeaching philosophy TL;DR:\n\nDevelop the habit of learning from first principles\n\nMotivate everything\nWell motivated and engaging active learning problem sets with appropriate scaffolding (TILT)\n\nStudents build things that they are passionate about through mini-projects and mini-hackathons\nTeaching stack: Mentimeter, Manim, Nbgrader, markdown2canvas, codeshare"
   },
   {
     "objectID": "publications.html",
