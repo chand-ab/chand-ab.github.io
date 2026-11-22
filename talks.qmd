@@ -22,7 +22,7 @@ title: "Talks & Presentations"
 
 **Applications of Neural Networks to Modulus on Networks**  
 *SIAM Central States Section Annual Meeting 2024, Kansas City, October 2024*  
-<a href="assets/talks/Applications of Neural Networks to Modulus on Networks.pptx" target="_blank" rel="noopener noreferrer">Slides</a>
+<a href="assets/talks/Applications of Neural Networks to Modulus on Networks.pdf" target="_blank" rel="noopener noreferrer">Slides</a>
 
 **Introduction to GFlowNets**  
 *Node seminar, Kansas State University, March 2024*  

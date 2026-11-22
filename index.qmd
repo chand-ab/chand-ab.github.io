@@ -17,28 +17,19 @@ about:
       href: mailto:chandab@uwec.edu
 ---
 
-I am an Assistant Professor in the Mathematics Department at the University of Wisconsin-Eau Claire.
+I'm an Assistant Professor in the Mathematics Department at the University of Wisconsin-Eau Claire. I am currently working on problems in mechanistic interpretability and AI safety more broadly. I previously worked in network science, machine learning, and operator algebras. I was able to transition to AI safety thanks to [Iliad](https://www.iliad.ac/){target="_blank"}, [Eleuther AI](https://eleuther.ai/){target="_blank"}, [Bluedot Impact](https://bluedot.org/){target="_blank"} and [SPAR](https://sparai.org/){target="_blank"}.
 
-**Current teaching:**  
+My research is currently supported by grants from [Lightcone Commons](https://www.lightconecommons.com/){target="_blank"} and [ORSP](https://www.uwec.edu/offices-services/office-research-and-sponsored-programs){target="_blank"}.
 
-* Math 324: Linear Algebra  
-* DS 150: Computing in Python: Fundamentals and Procedural Programming 
+**Current teaching:**
 
-**Current research interests:**
-
-* Network Science and Graph Neural Networks
-* Deep learning
-* Mechanistic Interpretability
+* Math 324: Linear Algebra
+* DS 150: Computing in Python: Fundamentals and Procedural Programming
 
 **Teaching philosophy TL;DR:**
 
-* Develop the habit of learning from first principles  
+* Develop the habit of learning from first principles
 * Motivate everything
-* Well motivated and engaging active learning problem sets with appropriate scaffolding 
-([TILT](https://www.tilthighered.com/){target="_blank"})   
+* Well motivated and engaging active learning problem sets with appropriate scaffolding ([TILT](https://www.tilthighered.com/){target="_blank"})
 * Students build things that they are passionate about through mini-projects and mini-hackathons
-* Teaching stack: [Mentimeter](https://www.mentimeter.com/){target="_blank"}, 
-[Manim](https://www.manim.community/){target="_blank"}, 
-[Nbgrader](https://nbgrader.readthedocs.io/en/stable/){target="_blank"}, 
-[markdown2canvas](https://ofloveandhate.github.io/markdown2canvas/){target="_blank"}, 
-[codeshare](https://codeshare.io/){target="_blank"}
+* Teaching stack: [Mentimeter](https://www.mentimeter.com/){target="_blank"}, [Manim](https://www.manim.community/){target="_blank"}, [Nbgrader](https://nbgrader.readthedocs.io/en/stable/){target="_blank"}, [markdown2canvas](https://ofloveandhate.github.io/markdown2canvas/){target="_blank"}, [codeshare](https://codeshare.io/){target="_blank"}
