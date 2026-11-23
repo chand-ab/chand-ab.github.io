@@ -17,7 +17,9 @@ about:
       href: mailto:chandab@uwec.edu
 ---
 
-I'm an Assistant Professor in the Mathematics Department at the University of Wisconsin-Eau Claire. I am currently working on problems in mechanistic interpretability and AI safety more broadly. I previously worked in network science, machine learning, and operator algebras. I was able to transition to AI safety thanks to [Iliad](https://www.iliad.ac/){target="_blank"}, [Eleuther AI](https://eleuther.ai/){target="_blank"}, [Bluedot Impact](https://bluedot.org/){target="_blank"} and [SPAR](https://sparai.org/){target="_blank"}.
+I'm an Assistant Professor in the Mathematics Department at the University of Wisconsin-Eau Claire. 
+
+I'm currently working on problems in mechanistic interpretability and AI safety more broadly. I previously worked in network science, machine learning, and operator algebras. I was able to transition to AI safety thanks to [Iliad](https://www.iliad.ac/){target="_blank"}, [Eleuther AI](https://eleuther.ai/){target="_blank"}, [Bluedot Impact](https://bluedot.org/){target="_blank"} and [SPAR](https://sparai.org/){target="_blank"}.
 
 My research is currently supported by grants from [Lightcone Commons](https://www.lightconecommons.com/){target="_blank"} and [ORSP](https://www.uwec.edu/offices-services/office-research-and-sponsored-programs){target="_blank"}.
 
