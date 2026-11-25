@@ -144,14 +144,14 @@
     "href": "talks.html",
     "title": "Talks & Presentations",
     "section": "",
-    "text": "Analysis of reasoning models\nAMS Special Session on Mathematical Foundation of Machine Learning\nJoint Mathematics Meetings, Washington D.C., January 2026\nSlides\nLink to session\nModeling Content Spreading on Networks Through Network Science and Graph Neural Networks\nAMS Special Session on Modeling and Optimization on Graph-Structured Data\nJoint Mathematics Meetings, Seattle, January 2025\nSlides\nHigher Order Cheeger Inequalities\nNode seminar, Kansas State University, November 2024\nSlides\nApplications of Neural Networks to Modulus on Networks\nSIAM Central States Section Annual Meeting 2024, Kansas City, October 2024\nSlides\nIntroduction to GFlowNets\nNode seminar, Kansas State University, March 2024\nSlides\nIntroduction to Threshold Networks\nNode seminar, Kansas State University, November 2023\nSlides"
+    "text": "Analysis of reasoning models\nAMS Special Session on Mathematical Foundation of Machine Learning\nJoint Mathematics Meetings, Washington D.C., January 2026\nSlides\nModeling Content Spreading on Networks Through Network Science and Graph Neural Networks\nAMS Special Session on Modeling and Optimization on Graph-Structured Data\nJoint Mathematics Meetings, Seattle, January 2025\nSlides\nHigher Order Cheeger Inequalities\nNode seminar, Kansas State University, November 2024\nSlides\nApplications of Neural Networks to Modulus on Networks\nSIAM Central States Section Annual Meeting 2024, Kansas City, October 2024\nSlides\nIntroduction to GFlowNets\nNode seminar, Kansas State University, March 2024\nSlides\nIntroduction to Threshold Networks\nNode seminar, Kansas State University, November 2023\nSlides"
   },
   {
     "objectID": "talks.html#conference-seminar-talks",
     "href": "talks.html#conference-seminar-talks",
     "title": "Talks & Presentations",
     "section": "",
-    "text": "Analysis of reasoning models\nAMS Special Session on Mathematical Foundation of Machine Learning\nJoint Mathematics Meetings, Washington D.C., January 2026\nSlides\nLink to session\nModeling Content Spreading on Networks Through Network Science and Graph Neural Networks\nAMS Special Session on Modeling and Optimization on Graph-Structured Data\nJoint Mathematics Meetings, Seattle, January 2025\nSlides\nHigher Order Cheeger Inequalities\nNode seminar, Kansas State University, November 2024\nSlides\nApplications of Neural Networks to Modulus on Networks\nSIAM Central States Section Annual Meeting 2024, Kansas City, October 2024\nSlides\nIntroduction to GFlowNets\nNode seminar, Kansas State University, March 2024\nSlides\nIntroduction to Threshold Networks\nNode seminar, Kansas State University, November 2023\nSlides"
+    "text": "Analysis of reasoning models\nAMS Special Session on Mathematical Foundation of Machine Learning\nJoint Mathematics Meetings, Washington D.C., January 2026\nSlides\nModeling Content Spreading on Networks Through Network Science and Graph Neural Networks\nAMS Special Session on Modeling and Optimization on Graph-Structured Data\nJoint Mathematics Meetings, Seattle, January 2025\nSlides\nHigher Order Cheeger Inequalities\nNode seminar, Kansas State University, November 2024\nSlides\nApplications of Neural Networks to Modulus on Networks\nSIAM Central States Section Annual Meeting 2024, Kansas City, October 2024\nSlides\nIntroduction to GFlowNets\nNode seminar, Kansas State University, March 2024\nSlides\nIntroduction to Threshold Networks\nNode seminar, Kansas State University, November 2023\nSlides"
   },
   {
     "objectID": "teaching.html",
@@ -565,5 +565,40 @@
     "title": "Be aware of the dropout!",
     "section": "Citation",
     "text": "Citation\n@online{chand2026dropout,\n  author       = {Chand, Abhinav},\n  title        = {Be aware of the dropout!},\n  date         = {2026-06-16},\n  url          = {https://chand-ab.github.io/blog/be-aware-of-the-dropout/}\n}"
+  },
+  {
+    "objectID": "home-preview.html",
+    "href": "home-preview.html",
+    "title": "Abhinav Chand",
+    "section": "",
+    "text": "I’m an Assistant Professor in the Mathematics Department at the University of Wisconsin-Eau Claire.\nI’m currently working on problems in mechanistic interpretability and AI safety more broadly. I previously worked in network science, machine learning, and operator algebras. I was able to transition to AI safety thanks to Iliad, Eleuther AI, Bluedot Impact and SPAR.\nMy research is currently supported by grants from Lightcone Commons and ORSP."
+  },
+  {
+    "objectID": "home-preview.html#publications",
+    "href": "home-preview.html#publications",
+    "title": "Abhinav Chand",
+    "section": "Publications",
+    "text": "Publications\n\n\nChand, A. (2025). Influence problems on a content-spreading model and graph machine learning. Phys. Rev. E, 112, 064312. https://doi.org/10.1103/2cnl-b6wl\n\n\nChand, A., & Robert, L. (2023). Simplicity, bounded normal generation, and automatic continuity of groups of unitaries. Advances in Mathematics, 415, 108894. https://doi.org/10.1016/j.aim.2023.108894\n\n\nChand, A., Robert, L., & Sutradhar, A. (2021). Simultaneous averaging to zero by unitary mixing operators. Proceedings of the American Mathematical Society, 149(12), 5169–5177. https://doi.org/10.1090/proc/15495"
+  },
+  {
+    "objectID": "home-preview.html#talks",
+    "href": "home-preview.html#talks",
+    "title": "Abhinav Chand",
+    "section": "Talks",
+    "text": "Talks\nAnalysis of reasoning models [Slides] AMS Special Session on Mathematical Foundation of Machine Learning, JMM, Washington D.C., Jan 2026\nModeling Content Spreading on Networks Through Network Science and Graph Neural Networks [Slides] AMS Special Session on Modeling and Optimization on Graph-Structured Data, JMM, Seattle, Jan 2025\nHigher Order Cheeger Inequalities [Slides] Node seminar, Kansas State University, Nov 2024\nApplications of Neural Networks to Modulus on Networks [Slides] SIAM Central States Section Annual Meeting, Kansas City, Oct 2024\nIntroduction to GFlowNets [Slides] Node seminar, Kansas State University, Mar 2024\nIntroduction to Threshold Networks [Slides] Node seminar, Kansas State University, Nov 2023"
+  },
+  {
+    "objectID": "home-preview.html#teaching",
+    "href": "home-preview.html#teaching",
+    "title": "Abhinav Chand",
+    "section": "Teaching",
+    "text": "Teaching\n\nFall 2026: Math 324: Linear Algebra; DS 150: Computing in Python: Fundamentals and Procedural Programming\nSpring 2026: DS 150: Computing in Python; DS 740: Data Mining & Machine Learning\nFall 2025: DS 150: Computing in Python; Math 109: Precalculus Algebra\nSummer 2024: Math 340: Differential Equations\n\nTeaching philosophy TL;DR:\n\nDevelop the habit of learning from first principles\nMotivate everything\nWell motivated and engaging active learning problem sets with appropriate scaffolding (TILT)\nStudents build things that they are passionate about through mini-projects and mini-hackathons\nTeaching stack: Mentimeter, Manim, Nbgrader, markdown2canvas, codeshare"
+  },
+  {
+    "objectID": "index.html#current-teaching",
+    "href": "index.html#current-teaching",
+    "title": "Abhinav Chand",
+    "section": "Current teaching:",
+    "text": "Current teaching:\n\nMath 324: Linear Algebra\nDS 150: Computing in Python: Fundamentals and Procedural Programming\n\nTeaching philosophy TL;DR:\n\nDevelop the habit of learning from first principles\nMotivate everything\nWell motivated and engaging active learning problem sets with appropriate scaffolding (TILT)\nStudents build things that they are passionate about through mini-projects and mini-hackathons\nTeaching stack: Mentimeter, Manim, Nbgrader, markdown2canvas, codeshare"
   }
 ]

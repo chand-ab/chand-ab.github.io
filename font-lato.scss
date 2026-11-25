@@ -1,0 +1,14 @@
+/*-- scss:defaults --*/
+// Option A: Lato everywhere (like jonbarron.info)
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Source+Code+Pro:wght@400;600&display=swap');
+$font-family-sans-serif: "Lato", -apple-system, "Helvetica Neue", Arial, sans-serif;
+$font-family-monospace: "Source Code Pro", SFMono-Regular, Menlo, monospace;
+$headings-font-family: "Lato", sans-serif;
+
+// Links: no underline, underline on hover
+$link-decoration: none;
+$link-hover-decoration: underline;
+
+/*-- scss:rules --*/
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }

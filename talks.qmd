@@ -8,8 +8,6 @@ title: "Talks & Presentations"
 *AMS Special Session on Mathematical Foundation of Machine Learning*  
 *Joint Mathematics Meetings, Washington D.C., January 2026*  
 <a href="assets/talks/analysis of reasoning models.pdf" target="_blank" rel="noopener noreferrer">Slides</a>  
-<a href="https://jointmathematicsmeetings.org/meetings/national/jmm2026/jmm2026-program" target="_blank" rel="noopener noreferrer">Link to session</a>
-
 
 **Modeling Content Spreading on Networks Through Network Science and Graph Neural Networks**    
 *AMS Special Session on Modeling and Optimization on Graph-Structured Data*  
@@ -21,7 +19,7 @@ title: "Talks & Presentations"
 <a href="assets/talks/Cheeger.pdf" target="_blank" rel="noopener noreferrer">Slides</a>
 
 **Applications of Neural Networks to Modulus on Networks**  
-*SIAM Central States Section Annual Meeting 2024, Kansas City, October 2024*  
+*SIAM Central States Section Annual Meeting, Kansas City, October 2024*  
 <a href="assets/talks/Applications of Neural Networks to Modulus on Networks.pdf" target="_blank" rel="noopener noreferrer">Slides</a>
 
 **Introduction to GFlowNets**  
