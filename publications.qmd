@@ -1,11 +1,109 @@
 ---
 title: "Publications"
-bibliography: ./assets/publications.bib
-csl: https://www.zotero.org/styles/apa-cv  # or ieee-with-url, nature, etc.
-nocite: '@*'
-link-citations: true
-css: publications.css 
+css: publications.css
+toc: false
+execute:
+  echo: false
+  freeze: auto
 ---
 
-::: {#refs}
-:::
+```{python}
+#| output: asis
+# Builds the publication list from assets/publications.bib.
+# To add a paper, add an entry to the .bib file and re-render.
+import re
+from pathlib import Path
+
+BIB_FILE = Path("assets/publications.bib")
+
+
+def read_braced(text, i):
+    """Return (content, next_index) for a {...} group starting at text[i]."""
+    depth, start = 0, i
+    while i < len(text):
+        if text[i] == "{":
+            depth += 1
+        elif text[i] == "}":
+            depth -= 1
+            if depth == 0:
+                return text[start + 1 : i], i + 1
+        i += 1
+    raise ValueError("Unbalanced braces in .bib file")
+
+
+def parse_fields(body):
+    fields, i = {}, 0
+    while i < len(body):
+        m = re.compile(r"[\s,]*([A-Za-z_-]+)\s*=\s*").match(body, i)
+        if not m:
+            break
+        name, i = m.group(1).lower(), m.end()
+        if body[i] == "{":
+            value, i = read_braced(body, i)
+        elif body[i] == '"':
+            end = body.index('"', i + 1)
+            value, i = body[i + 1 : end], end + 1
+        else:
+            end = body.find(",", i)
+            end = len(body) if end < 0 else end
+            value, i = body[i:end], end
+        fields[name] = " ".join(value.replace("{", "").replace("}", "").split())
+    return fields
+
+
+def parse_bib(text):
+    entries, i = [], 0
+    while (at := text.find("@", i)) >= 0:
+        brace = text.find("{", at)
+        body, i = read_braced(text, brace)
+        _key, _, rest = body.partition(",")
+        entries.append(parse_fields(rest))
+    return entries
+
+
+def format_authors(raw):
+    names = []
+    for name in re.split(r"\s+and\s+", raw):
+        if "," in name:  # "Last, First" -> "First Last"
+            last, first = [p.strip() for p in name.split(",", 1)]
+            name = f"{first} {last}"
+        names.append(name)
+    return ", ".join(names)
+
+
+def format_venue(e):
+    venue = e.get("journal") or e.get("booktitle", "")
+    parts = [f"*{venue}*"] if venue else []
+    if vol := e.get("volume"):
+        num = e.get("number") or e.get("issue")
+        parts.append(f"{vol}({num})" if num else vol)
+    if pages := e.get("pages"):
+        parts.append(pages.replace("--", "–"))
+    if year := e.get("year"):
+        parts.append(year)
+    return ", ".join(parts)
+
+
+def link(e):
+    if url := e.get("url"):
+        return url
+    if doi := e.get("doi"):
+        return f"https://doi.org/{doi}"
+    return None
+
+
+entries = parse_bib(BIB_FILE.read_text(encoding="utf-8"))
+entries.sort(key=lambda e: int(e.get("year", 0)), reverse=True)
+
+for e in entries:
+    lines = [
+        "::: {.pub}",
+        f"[{e.get('title', '')}]{{.pub-title}}",
+        f"[{format_authors(e.get('author', ''))}]{{.pub-authors}}",
+        f"[{format_venue(e)}]{{.pub-venue}}",
+    ]
+    if href := link(e):
+        lines.append(f'[[Paper]({href}){{target="_blank" rel="noopener"}}]{{.pub-links}}')
+    lines.append(":::\n")
+    print("\n".join(lines))
+```

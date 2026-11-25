@@ -1,30 +1,40 @@
 ---
 title: "Talks & Presentations"
+css: talks.css
+toc: false
 ---
-
-## Conference & Seminar Talks
 
 **Analysis of reasoning models**  
 *AMS Special Session on Mathematical Foundation of Machine Learning*  
 *Joint Mathematics Meetings, Washington D.C., January 2026*  
 <a href="assets/talks/analysis of reasoning models.pdf" target="_blank" rel="noopener noreferrer">Slides</a>  
 
+---
+
 **Modeling Content Spreading on Networks Through Network Science and Graph Neural Networks**    
 *AMS Special Session on Modeling and Optimization on Graph-Structured Data*  
 *Joint Mathematics Meetings, Seattle, January 2025*  
 <a href="assets/talks/slided_test.pdf" target="_blank" rel="noopener noreferrer">Slides</a>
 
+---
+
 **Higher Order Cheeger Inequalities**  
 *Node seminar, Kansas State University, November 2024*   
 <a href="assets/talks/Cheeger.pdf" target="_blank" rel="noopener noreferrer">Slides</a>
+
+---
 
 **Applications of Neural Networks to Modulus on Networks**  
 *SIAM Central States Section Annual Meeting, Kansas City, October 2024*  
 <a href="assets/talks/Applications of Neural Networks to Modulus on Networks.pdf" target="_blank" rel="noopener noreferrer">Slides</a>
 
+---
+
 **Introduction to GFlowNets**  
 *Node seminar, Kansas State University, March 2024*  
 <a href="assets/talks/Gflownets Slides.pdf" target="_blank" rel="noopener noreferrer">Slides</a>
+
+---
 
 **Introduction to Threshold Networks**  
 *Node seminar, Kansas State University, November 2023*  

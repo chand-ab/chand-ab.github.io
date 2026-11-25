@@ -1,0 +1,12 @@
+{
+  "hash": "c998b24aac1ffc5ef345331b2d3d12f2",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Publications\"\ncss: publications.css\ntoc: false\nexecute:\n  echo: false\n  freeze: auto\n---\n\n::: {.pub}\n[Influence problems on a content-spreading model and graph machine learning]{.pub-title}\n[Abhinav Chand]{.pub-authors}\n[*Phys. Rev. E*, 112(6), 064312, 2025]{.pub-venue}\n[[Paper](https://link.aps.org/doi/10.1103/2cnl-b6wl){target=\"_blank\" rel=\"noopener\"}]{.pub-links}\n:::\n\n::: {.pub}\n[Simplicity, bounded normal generation, and automatic continuity of groups of unitaries]{.pub-title}\n[Abhinav Chand, Leonel Robert]{.pub-authors}\n[*Advances in Mathematics*, 415, 108894, 2023]{.pub-venue}\n[[Paper](https://www.sciencedirect.com/science/article/pii/S0001870823000373){target=\"_blank\" rel=\"noopener\"}]{.pub-links}\n:::\n\n::: {.pub}\n[Simultaneous averaging to zero by unitary mixing operators]{.pub-title}\n[Abhinav Chand, Leonel Robert, Arindam Sutradhar]{.pub-authors}\n[*Proceedings of the American Mathematical Society*, 149(12), 5169–5177, 2021]{.pub-venue}\n[[Paper](http://dx.doi.org/10.1090/proc/15495){target=\"_blank\" rel=\"noopener\"}]{.pub-links}\n:::\n\n\n\n",
+    "supporting": [
+      "publications_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

@@ -144,21 +144,21 @@
     "href": "talks.html",
     "title": "Talks & Presentations",
     "section": "",
-    "text": "Analysis of reasoning models\nAMS Special Session on Mathematical Foundation of Machine Learning\nJoint Mathematics Meetings, Washington D.C., January 2026\nSlides\nModeling Content Spreading on Networks Through Network Science and Graph Neural Networks\nAMS Special Session on Modeling and Optimization on Graph-Structured Data\nJoint Mathematics Meetings, Seattle, January 2025\nSlides\nHigher Order Cheeger Inequalities\nNode seminar, Kansas State University, November 2024\nSlides\nApplications of Neural Networks to Modulus on Networks\nSIAM Central States Section Annual Meeting 2024, Kansas City, October 2024\nSlides\nIntroduction to GFlowNets\nNode seminar, Kansas State University, March 2024\nSlides\nIntroduction to Threshold Networks\nNode seminar, Kansas State University, November 2023\nSlides"
+    "text": "Analysis of reasoning models\nAMS Special Session on Mathematical Foundation of Machine Learning\nJoint Mathematics Meetings, Washington D.C., January 2026\nSlides\n\nModeling Content Spreading on Networks Through Network Science and Graph Neural Networks\nAMS Special Session on Modeling and Optimization on Graph-Structured Data\nJoint Mathematics Meetings, Seattle, January 2025\nSlides\n\nHigher Order Cheeger Inequalities\nNode seminar, Kansas State University, November 2024\nSlides\n\nApplications of Neural Networks to Modulus on Networks\nSIAM Central States Section Annual Meeting, Kansas City, October 2024\nSlides\n\nIntroduction to GFlowNets\nNode seminar, Kansas State University, March 2024\nSlides\n\nIntroduction to Threshold Networks\nNode seminar, Kansas State University, November 2023\nSlides"
   },
   {
     "objectID": "talks.html#conference-seminar-talks",
     "href": "talks.html#conference-seminar-talks",
     "title": "Talks & Presentations",
     "section": "",
-    "text": "Analysis of reasoning models\nAMS Special Session on Mathematical Foundation of Machine Learning\nJoint Mathematics Meetings, Washington D.C., January 2026\nSlides\nModeling Content Spreading on Networks Through Network Science and Graph Neural Networks\nAMS Special Session on Modeling and Optimization on Graph-Structured Data\nJoint Mathematics Meetings, Seattle, January 2025\nSlides\nHigher Order Cheeger Inequalities\nNode seminar, Kansas State University, November 2024\nSlides\nApplications of Neural Networks to Modulus on Networks\nSIAM Central States Section Annual Meeting 2024, Kansas City, October 2024\nSlides\nIntroduction to GFlowNets\nNode seminar, Kansas State University, March 2024\nSlides\nIntroduction to Threshold Networks\nNode seminar, Kansas State University, November 2023\nSlides"
+    "text": "Analysis of reasoning models\nAMS Special Session on Mathematical Foundation of Machine Learning\nJoint Mathematics Meetings, Washington D.C., January 2026\nSlides\nModeling Content Spreading on Networks Through Network Science and Graph Neural Networks\nAMS Special Session on Modeling and Optimization on Graph-Structured Data\nJoint Mathematics Meetings, Seattle, January 2025\nSlides\nHigher Order Cheeger Inequalities\nNode seminar, Kansas State University, November 2024\nSlides\nApplications of Neural Networks to Modulus on Networks\nSIAM Central States Section Annual Meeting, Kansas City, October 2024\nSlides\nIntroduction to GFlowNets\nNode seminar, Kansas State University, March 2024\nSlides\nIntroduction to Threshold Networks\nNode seminar, Kansas State University, November 2023\nSlides"
   },
   {
     "objectID": "teaching.html",
     "href": "teaching.html",
     "title": "Teaching",
     "section": "",
-    "text": "Fall 2026\nMath 324: Linear Algebra\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nSpring 2026\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nDS 740: Data Mining & Machine Learning\nFall 2025\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nMath 109: Precalculus Algebra\nSummer 2024\nMath 340: Differential Equations"
+    "text": "Fall 2026\nMath 324: Linear Algebra\nDS 150: Computing in Python: Fundamentals and Procedural Programming\n\nSpring 2026\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nDS 740: Data Mining & Machine Learning\n\nFall 2025\nDS 150: Computing in Python: Fundamentals and Procedural Programming\nMath 109: Precalculus Algebra\n\nSummer 2024\nMath 340: Differential Equations"
   },
   {
     "objectID": "teaching.html#as-instructor-of-record",
@@ -186,7 +186,7 @@
     "href": "publications.html",
     "title": "Publications",
     "section": "",
-    "text": "Chand, A. (2025). Influence problems on a content-spreading model and graph machine learning. Phys. Rev. E, 112, 064312. https://doi.org/10.1103/2cnl-b6wl\n\n\nChand, A., & Robert, L. (2023). Simplicity, bounded normal generation, and automatic continuity of groups of unitaries. Advances in Mathematics, 415, 108894. https://doi.org/10.1016/j.aim.2023.108894\n\n\nChand, A., Robert, L., & Sutradhar, A. (2021). Simultaneous averaging to zero by unitary mixing operators. Proceedings of the American Mathematical Society, 149(12), 5169–5177. https://doi.org/10.1090/proc/15495"
+    "text": "Influence problems on a content-spreading model and graph machine learning Abhinav Chand Phys. Rev. E, 112(6), 064312, 2025 Paper\n\n\nSimplicity, bounded normal generation, and automatic continuity of groups of unitaries Abhinav Chand, Leonel Robert Advances in Mathematics, 415, 108894, 2023 Paper\n\n\nSimultaneous averaging to zero by unitary mixing operators Abhinav Chand, Leonel Robert, Arindam Sutradhar Proceedings of the American Mathematical Society, 149(12), 5169–5177, 2021 Paper"
   },
   {
     "objectID": "teaching/precalculus.html",

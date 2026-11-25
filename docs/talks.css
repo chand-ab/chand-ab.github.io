@@ -1,0 +1,5 @@
+/* Venue lines (the italic lines under each talk title) */
+main p em {
+  font-size: 0.95rem;
+  opacity: 0.75;
+}

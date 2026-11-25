@@ -1,4 +1,41 @@
-#refs div {
-  padding: 1.5em 0;
-  border-bottom: 1px solid #eee;
+/* Publications list */
+
+.pub {
+  padding: 1.1rem 0;
+  border-top: 1px solid rgba(127, 127, 127, 0.2);
+}
+
+.pub:last-of-type {
+  border-bottom: 1px solid rgba(127, 127, 127, 0.2);
+}
+
+.pub p {
+  margin: 0;
+}
+
+.pub-title,
+.pub-authors,
+.pub-venue,
+.pub-links {
+  display: block;
+}
+
+.pub-title {
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 0.2rem;
+}
+
+.pub-authors {
+  font-size: 0.95rem;
+}
+
+.pub-venue {
+  font-size: 0.95rem;
+  opacity: 0.75;
+}
+
+.pub-links {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
 }
