@@ -4,11 +4,3 @@
 $font-family-sans-serif: "Lato", -apple-system, "Helvetica Neue", Arial, sans-serif;
 $font-family-monospace: "Source Code Pro", SFMono-Regular, Menlo, monospace;
 $headings-font-family: "Lato", sans-serif;
-
-// Links: no underline, underline on hover
-$link-decoration: none;
-$link-hover-decoration: underline;
-
-/*-- scss:rules --*/
-a { text-decoration: none; }
-a:hover { text-decoration: underline; }
