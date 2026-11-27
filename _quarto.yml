@@ -21,7 +21,7 @@ website:
 format:
   html:
     theme:
-      light: [cosmo, font-lato.scss]
+      light: [cosmo, font-lato.scss, light.scss]
       dark: [darkly, font-lato.scss]
     css: styles.css
     toc: true
